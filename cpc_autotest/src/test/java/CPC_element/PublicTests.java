@@ -113,16 +113,16 @@ public class PublicTests {
 	 * @param elements 传入的页面元素
 	 * @return Map<String,String> 返回元素及对应的文本内容
 	 */
-	Map<String,String> map;
-	public Map<String,String> before_verify(String...elements ) {
+	Map<WebElement,String> map;
+	public Map<WebElement,String> before_verify(String...elements ) {
 		 map=new HashMap<>();
 		for (String vfstring : elements) {
 			WebElement wele=d.findElement(By.xpath(vfstring));
 			if(!"input".equals(wele.getTagName())) {
-				map.put(vfstring, wele.getText());
+				map.put(wele, wele.getText());
 				//System.out.println(wele.getText()+":"+vfstring);
 			}else {
-				map.put(vfstring, wele.getAttribute("value"));
+				map.put(wele, wele.getAttribute("value"));
 				//System.out.println(wele.getAttribute("value")+":"+vfstring);
 			}
 		}
@@ -133,17 +133,16 @@ public class PublicTests {
 	 * 校验修改后的内容
 	 * @param map
 	 */
-	public void verify(Map<String,String> afmap) {
+	public void verify(Map<WebElement,String> afmap) {
 		
 		String textafter;
-		for (String xpath : afmap.keySet()) {
-			WebElement lele=d.findElement(By.xpath(xpath));
-			String textbefore=afmap.get(xpath);
-			if(!"input".equals(lele.getTagName())) {
-				textafter=lele.getText();
+		for (WebElement ele : afmap.keySet()) {
+			String textbefore=afmap.get(ele);
+			if(!"input".equals(ele.getTagName())) {
+				textafter=ele.getText();
 				//System.out.println(lele.getText()+":"+xpath);
 			}else {
-				textafter=lele.getAttribute("value");
+				textafter=ele.getAttribute("value");
 			}
 			assertTrue(textbefore.equals(textafter), "是否修改");
 		}

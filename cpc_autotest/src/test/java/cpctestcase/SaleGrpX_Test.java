@@ -28,7 +28,7 @@ public class SaleGrpX_Test extends PublicTests{
 	String befozb;
 	String befosale;
 
-	Map<String, String> beforemap=
+	Map<WebElement, String> beforemap=
 			before_verify(ElementLocate.GROUP_BUSI_TEXT,ElementLocate.SALESMAN);
 
 	@DisplayName("case_001修改下单")

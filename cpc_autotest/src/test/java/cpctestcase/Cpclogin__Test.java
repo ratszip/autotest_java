@@ -13,7 +13,6 @@ import com.cpc.Util.Screenshot;
 
 import CPC_element.ElementLocate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;

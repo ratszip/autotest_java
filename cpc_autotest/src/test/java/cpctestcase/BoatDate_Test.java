@@ -15,6 +15,8 @@ import com.cpc.Util.CPCDateUtils;
 import com.cpc.Util.PublicData;
 import com.cpc.Util.Screenshot;
 
+import CPC_element.ElementLocate;
+
 
 @DisplayName("船期-主表")
 public class BoatDate_Test {
@@ -25,9 +27,9 @@ public class BoatDate_Test {
 	@Test
 	@Order(1)
 	public void btdt() {
-		WebElement btdate=d.findElement(By.id("input-264"));
+		WebElement btdate=d.findElement(By.id(ElementLocate.BOAT_DATE_id));
 		String next2date=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),2);
-		String js="var q=document.getElementById('input-264');q.value="+'\"'+next2date+'\"';
+		String js="var q=document.getElementById('"+ElementLocate.BOAT_DATE_id+"');q.value="+'\"'+next2date+'\"';
 		JavascriptExecutor driver_js=((JavascriptExecutor) d);
 		driver_js.executeScript(js);
 		try {

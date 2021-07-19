@@ -29,7 +29,7 @@ public class OrderDate_Test {
 	public void orderdt() {
 		WebElement ordate=d.findElement(By.xpath(ElementLocate.ORDER_DATE));
 		String nextdate=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),1);
-		String js="var q=document.getElementById('input-263');q.value="+'\"'+nextdate+'\"';
+		String js="var q=document.getElementById('"+ElementLocate.ORDER_DATE_id+"');q.value="+'\"'+nextdate+'\"';
 		JavascriptExecutor driver_js=((JavascriptExecutor) d);
 		driver_js.executeScript(js);
 		try {

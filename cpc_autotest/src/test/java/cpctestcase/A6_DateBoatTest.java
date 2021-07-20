@@ -19,7 +19,7 @@ import CPC_element.ElementLocate;
 
 
 @DisplayName("订单日期-主表")
-public class OrderDate_Test {
+public class A6_DateBoatTest {
 	//Date date=new Date();
 	WebDriver d=PublicData.d;
 	WebDriverWait wait=new WebDriverWait(d, 2);
@@ -38,8 +38,23 @@ public class OrderDate_Test {
 			Screenshot.DN(d, "-输入当天的下一天");
 			throw e;
 		}
-		
-		
+	}
+	
+	@DisplayName("case_002录入船期")
+	@Test
+	@Order(2)
+	public void btdt() {
+		WebElement btdate=d.findElement(By.id(ElementLocate.BOAT_DATE_id));
+		String next2date=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),2);
+		String js="var q=document.getElementById('"+ElementLocate.BOAT_DATE_id+"');q.value="+'\"'+next2date+'\"';
+		JavascriptExecutor driver_js=((JavascriptExecutor) d);
+		driver_js.executeScript(js);
+		try {
+			assertEquals(btdate.getAttribute("value"),next2date);
+		}catch(AssertionError e) {
+			Screenshot.DN(d, "-输入后天");
+			throw e;
+		}
 	}
 	
 }

@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.cpc.Util.PublicData;
@@ -41,27 +42,27 @@ public class PublicTests {
 			throws InterruptedException {
 		vele=d.findElement(By.xpath(elexpath));
 		vele.click();
-		Thread.sleep(100);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
+		Thread.sleep(50);
 		veledown=d.findElement(By.xpath(downxpath));
-		Thread.sleep(200);
 		compare=d.findElement(By.xpath(downtext)).getText();
 		veledown.click();
-		Thread.sleep(100);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(eletext)));
 		veletext=d.findElement(By.xpath(eletext));
 		textoratrEq(elexpath, atr, compare, shotname);
 	}
 	public void selecpare(String elexpath,String downxpath,String shotname,int atr) throws InterruptedException {
 		vele = d.findElement(By.xpath(elexpath));
 		vele.click();
-		Thread.sleep(200);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
+		Thread.sleep(50);
 		veledown = d.findElement(By.xpath(downxpath));
-		Thread.sleep(100);
 		compare=d.findElement(By.xpath(downxpath)).getText();
 		veledown.click();
 		textoratrEq(elexpath, atr, compare, shotname);
 	}
 	/**
-	 * 
+	 * no data available
 	 * @param ele 输入框
 	 * @param eledown 输入框下拉项
 	 * @param shotname 错误截图名称
@@ -72,7 +73,7 @@ public class PublicTests {
 	public void selecpare(String elexpath,String downpath,String shotname,int atr,String zdy) throws InterruptedException {
 		vele = d.findElement(By.xpath(elexpath));
 		vele.click();
-		Thread.sleep(200);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
 		veledown = d.findElement(By.xpath(downpath));
 		veledown.click();
 		textoratrEq(elexpath, atr, zdy, shotname);
@@ -110,8 +111,8 @@ public class PublicTests {
 			}else {
 				textafter=ele.getAttribute("value");
 			}
-			System.out.println("before:"+textbefore);
-			System.out.println("after:"+textafter);
+//			System.out.println("before:"+textbefore);
+//			System.out.println("after:"+textafter);
 		try {
 			assertTrue(!textbefore.equals(textafter), "是否修改");
 		}catch(AssertionError e) {
@@ -183,7 +184,7 @@ public class PublicTests {
 	}
 	
 	/**
-	 * 判断用getText还是getAtrribute,断言assertTrue
+	 * 判断用getText还是getAtrribute,断言assertNotEqual
 	 * @param ele
 	 * @param atr
 	 * @param compare
@@ -204,5 +205,19 @@ public class PublicTests {
 				Screenshot.DN(d, shotname);
 				throw e;
 			}
+	}
+	
+	public void checkboxSelec(String xpath,String xpathen,String shotname) {
+		vele=d.findElement(By.xpath(xpath));
+		veletext=d.findElement(By.xpath(xpathen));
+		if(!vele.isSelected()) {
+			veletext.click();
+			try {
+				assertTrue(vele.isSelected());
+			}catch(AssertionError e){
+				Screenshot.DN(d, shotname);
+				throw e;
+			}
+		}
 	}
 }

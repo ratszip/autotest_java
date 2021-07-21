@@ -7,13 +7,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.cpc.Util.ExtentUtils;
 import com.cpc.Util.PublicData;
 import com.cpc.Util.Screenshot;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.NetworkMode;
 
 import CPC_element.ElementLocate;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.Rule;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -25,7 +31,7 @@ import org.junit.jupiter.api.Test;
 	String baseURL=PublicData.baseURL;
 	WebDriver d=PublicData.d;
 	WebDriverWait wait=new WebDriverWait(d, 3);
-	
+
     @Test
     @Order(1)
     @DisplayName("case_001_登录CPC")

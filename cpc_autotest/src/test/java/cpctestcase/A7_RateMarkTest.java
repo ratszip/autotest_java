@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
 
-@DisplayName("选择误差率")
+@DisplayName("年份季度到单价备注")
 public class A7_RateMarkTest extends PublicTests{
 	
 	@Test
 	@Order(1)
-	@DisplayName("case_001年份")
+	@DisplayName("case_001_年份")
 	public void year() throws InterruptedException {
 		selecpare(ElementLocate.YEAR, 
 				ElementLocate.YEAR_TEXT, 
@@ -23,7 +23,7 @@ public class A7_RateMarkTest extends PublicTests{
 	
 	@Test
 	@Order(2)
-	@DisplayName("case_002季度")
+	@DisplayName("case_002_季度")
 	public void season() throws InterruptedException {
 		selecpare(ElementLocate.SEASON, 
 				ElementLocate.SEASON_TEXT, 
@@ -34,7 +34,7 @@ public class A7_RateMarkTest extends PublicTests{
 	
 	@Test
 	@Order(3)
-	@DisplayName("case_003误差率")
+	@DisplayName("case_003_误差率")
 	public void rate() throws InterruptedException {
 		selecpare(ElementLocate.RATE_M, 
 				ElementLocate.RATE_M_TEXT, 

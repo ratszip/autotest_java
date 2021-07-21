@@ -25,7 +25,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	
 	@Test
 	@Order(1)
-	@DisplayName("case001_品牌")
+	@DisplayName("case_001_品牌")
 	public void brand() throws InterruptedException {
 		selecpare(ElementLocate.BRAND, ElementLocate.BRAND_NOT, "无品牌", 2,"");
 	}

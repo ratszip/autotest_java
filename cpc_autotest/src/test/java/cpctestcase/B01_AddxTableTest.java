@@ -26,15 +26,14 @@ public class B01_AddxTableTest {
 	@Order(1)
 	@DisplayName("case_001_增加一条细表")
 	public void xzxb() throws InterruptedException {
-		
 		List<WebElement> eles=d.findElements(By.xpath("//*[@id=\"tab-1\"]/div[2]/div/div[2]/div/div/div/table/tbody/tr"));
 		int size_before=eles.size();
-		System.out.println(size_before);
+//		System.out.println(size_before);
 		d.findElement(By.xpath(ElementLocate.ADD_X)).click();
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		eles=d.findElements(By.xpath("//*[@id=\"tab-1\"]/div[2]/div/div[2]/div/div/div/table/tbody/tr"));
 		int size_after=eles.size();
-		System.out.println(size_after);
+//		System.out.println(size_after);
 		try {
 			assertTrue((size_before+1)==size_after,"增加一行");
 		}catch(AssertionError e) {

@@ -13,13 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.cpc.Util.CPCDateUtils;
 import com.cpc.Util.PublicData;
-import com.cpc.Util.Screenshot;
 
 import CPC_element.ElementLocate;
+import CPC_element.PublicTests;
 
 
 @DisplayName("订单日期-主表")
-public class A6_DateBoatTest {
+public class A6_DateBoatTest extends PublicTests{
 	//Date date=new Date();
 	WebDriver d=PublicData.d;
 	WebDriverWait wait=new WebDriverWait(d, 2);
@@ -32,12 +32,7 @@ public class A6_DateBoatTest {
 		String js="var q=document.getElementById('"+ElementLocate.ORDER_DATE_id+"');q.value="+'\"'+nextdate+'\"';
 		JavascriptExecutor driver_js=((JavascriptExecutor) d);
 		driver_js.executeScript(js);
-		try {
-			assertEquals(ordate.getAttribute("value"),nextdate);
-		}catch(AssertionError e) {
-			Screenshot.DN(d, "-输入当天的下一天");
-			throw e;
-		}
+		assertEquals(ordate.getAttribute("value"),nextdate);
 	}
 	
 	@DisplayName("case_002录入船期")
@@ -49,12 +44,7 @@ public class A6_DateBoatTest {
 		String js="var q=document.getElementById('"+ElementLocate.BOAT_DATE_id+"');q.value="+'\"'+next2date+'\"';
 		JavascriptExecutor driver_js=((JavascriptExecutor) d);
 		driver_js.executeScript(js);
-		try {
-			assertEquals(btdate.getAttribute("value"),next2date);
-		}catch(AssertionError e) {
-			Screenshot.DN(d, "-输入后天");
-			throw e;
-		}
+		assertEquals(btdate.getAttribute("value"),next2date);
 	}
 	
 }

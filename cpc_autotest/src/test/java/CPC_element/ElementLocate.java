@@ -4,7 +4,7 @@ public class ElementLocate {
 	/*******************开票客户***********************/
 	public static String CUS_NO="//*[@id=\"cust_no\"]";//开票客户
 	public static String KNITWEAR = "//*[@id=\"list-item-353-1\"]/div/div[1]";//开票-伟新有限公司
-	/******************************************/
+	/************************************************/
 	public static String CUS_ORDER_NUM="//*[@id=\"ref_no\"]";//客户单号
 	/*******************开票检验***********************/
 	public static String LOGIN="//span[text()='Login']";//登录按钮

@@ -1,37 +1,29 @@
 package cpctestcase;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.cpc.Util.ExtentUtils;
 import com.cpc.Util.PublicData;
-import com.cpc.Util.Screenshot;
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.NetworkMode;
 
 import CPC_element.ElementLocate;
+import CPC_element.PublicTests;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import org.junit.Rule;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-
 @DisplayName("登录测试")
- class A1_CpcloginTest
+class A1_CpcloginTest extends PublicTests
 {	
 	String baseURL=PublicData.baseURL;
 	WebDriver d=PublicData.d;
 	WebDriverWait wait=new WebDriverWait(d, 3);
-
+	
     @Test
     @Order(1)
     @DisplayName("case_001_登录CPC")
@@ -50,14 +42,6 @@ import org.junit.jupiter.api.Test;
 		WebDriverWait wait = new WebDriverWait(d, 10);	
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.INDEX)));	
 		WebElement info=d.findElement(By.xpath(ElementLocate.TITLE));
-		try {
-			assertTrue(info.isDisplayed(),"显示首页信息");
-			}catch(AssertionError e) {
-			Screenshot.DN(d, "-进入首页");
-			throw e;
-		}
+		assertFalse(info.isDisplayed(),"显示首页信息");
     }
-    
-    
-   
 }

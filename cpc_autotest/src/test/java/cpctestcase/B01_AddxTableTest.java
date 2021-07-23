@@ -13,12 +13,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.cpc.Util.PublicData;
-import com.cpc.Util.Screenshot;
 
 import CPC_element.ElementLocate;
+import CPC_element.PublicTests;
 
 @DisplayName("新增细表")
-public class B01_AddxTableTest {
+public class B01_AddxTableTest extends PublicTests{
 	
 	WebDriver d=PublicData.d;
 	WebDriverWait wait=new WebDriverWait(d, 3);
@@ -34,11 +34,6 @@ public class B01_AddxTableTest {
 		eles=d.findElements(By.xpath("//*[@id=\"tab-1\"]/div[2]/div/div[2]/div/div/div/table/tbody/tr"));
 		int size_after=eles.size();
 //		System.out.println(size_after);
-		try {
-			assertTrue((size_before+1)==size_after,"增加一行");
-		}catch(AssertionError e) {
-			Screenshot.DN(d, "新增一行细表失败");
-			throw e;
-		}
+		assertTrue((size_before+1)==size_after,"增加一行");
     }
 }

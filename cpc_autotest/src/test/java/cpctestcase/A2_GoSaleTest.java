@@ -13,12 +13,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.cpc.Util.CPCDateUtils;
 import com.cpc.Util.PublicData;
-import com.cpc.Util.Screenshot;
 
 import CPC_element.ElementLocate;
+import CPC_element.PublicTests;
 
 @DisplayName("进入销售合同录入")
-public class A2_GoSaleTest{
+public class A2_GoSaleTest extends PublicTests{
 	WebDriver d=PublicData.d;
 	WebDriverWait wait=new WebDriverWait(d, 3);
 	@Test
@@ -34,12 +34,7 @@ public class A2_GoSaleTest{
 		d.findElement(By.xpath(ElementLocate.SALE_CONTRA_WR)).click();//销售合同录入
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("con_no")));
 		Boolean infosale=d.getPageSource().contains("*销售合同");
-		try {
-			assertTrue(infosale,"确定页面已经打开");
-		}catch(AssertionError e) {
-			Screenshot.DN(d, "打开合同录入");
-			throw e;
-		}
+		assertTrue(infosale,"确定页面已经打开");
     }
     
     @Test
@@ -47,11 +42,7 @@ public class A2_GoSaleTest{
     @DisplayName("case_002_已自动生成合同日期")
     public void salesDate() throws InterruptedException {
     	WebElement htdate = d.findElement(By.xpath(ElementLocate.SALE_CON_DATE));
-    	try {
-    		assertTrue(htdate.getAttribute("value").contains(CPCDateUtils.getCurDate2()),"合同日期");
-    	}catch(AssertionError e) {
-    		Screenshot.DN(d, "-生成合同日期");
-			throw e;
-    	}
+    	assertTrue(htdate.getAttribute("value").contains(CPCDateUtils.getCurDate2()),"合同日期");
+
     }
 }

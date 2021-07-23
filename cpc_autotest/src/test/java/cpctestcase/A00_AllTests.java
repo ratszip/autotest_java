@@ -6,6 +6,7 @@ import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.SelectPackages;
 import org.junit.runner.RunWith;
 
+
 @RunWith(JUnitPlatform.class)
 @SelectPackages("cpctestcase")
 @SelectClasses(
@@ -18,8 +19,10 @@ import org.junit.runner.RunWith;
 			A6_DateBoatTest.class,
 			A7_RateMarkTest.class,
 			A8_CheckBoxMTest.class,
+			B01_AddxTableTest.class
 		}
 )
+
 
 public class A00_AllTests {
 

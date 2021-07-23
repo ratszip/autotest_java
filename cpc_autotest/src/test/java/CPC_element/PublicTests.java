@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.cpc.Util.PublicData;
-import com.cpc.Util.Screenshot;
+import com.cpc.Util.ReportExtent;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.NetworkMode;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class PublicTests {
@@ -27,7 +30,9 @@ public class PublicTests {
 	WebElement veledown;
 	WebElement veletext;
 	String compare;
-	
+	static ExtentReports extent=new ExtentReports("reports/extent.html", true, NetworkMode.OFFLINE);
+	@RegisterExtension
+	static ReportExtent report=new ReportExtent(extent);
 	/**
 	 * 
 	 * @param ele 选项框
@@ -113,12 +118,7 @@ public class PublicTests {
 			}
 //			System.out.println("before:"+textbefore);
 //			System.out.println("after:"+textafter);
-		try {
 			assertTrue(!textbefore.equals(textafter), "是否修改");
-		}catch(AssertionError e) {
-			Screenshot.DN(d, shotname);
-			throw e;
-		}
 		}
 	}
 	
@@ -168,8 +168,7 @@ public class PublicTests {
 	 */
 	public void textoratrEq(String xpath,int atr,String compare,String shotname) {
 		vele=d.findElement(By.xpath(xpath));
-		try {
-			switch (atr) {
+		switch (atr) {
 			case 1:
 				assertEquals(vele.getText(), compare);
 				break;
@@ -177,10 +176,7 @@ public class PublicTests {
 				assertEquals(vele.getAttribute("value"),compare);
 				break;
 			}
-		}catch(AssertionError e) {
-				Screenshot.DN(d, shotname);
-				throw e;
-			}
+
 	}
 	
 	/**
@@ -192,7 +188,7 @@ public class PublicTests {
 	 */
 	public void textoratrNEq(String xpath,int atr,String compare,String shotname) {
 		vele=d.findElement(By.xpath(xpath));
-		try {
+
 			switch (atr) {
 			case 1:
 				assertNotEquals(vele.getText(), compare);
@@ -201,10 +197,7 @@ public class PublicTests {
 				assertNotEquals(vele.getAttribute("value"),compare);
 				break;
 			}
-		}catch(AssertionError e) {
-				Screenshot.DN(d, shotname);
-				throw e;
-			}
+
 	}
 	
 	public void checkboxSelec(String xpath,String xpathen,String shotname) {
@@ -212,12 +205,8 @@ public class PublicTests {
 		veletext=d.findElement(By.xpath(xpathen));
 		if(!vele.isSelected()) {
 			veletext.click();
-			try {
 				assertTrue(vele.isSelected());
-			}catch(AssertionError e){
-				Screenshot.DN(d, shotname);
-				throw e;
-			}
+
 		}
 	}
 }

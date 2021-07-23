@@ -26,6 +26,14 @@ public class CPCDateUtils {
 	    return dateformat.format(date);    //格式化时间,并用String对象存储
 	}
 	
+	 static String getcurTime() {
+	        Date date = Calendar.getInstance().getTime();
+	 
+	        // Display a date in day, month, year format
+	        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
+	        String today = formatter.format(date);
+	        return today;
+	    }
 	
 	//获取当前日期的后一天
 	public static String getSpecifiedDayAfter(String specifiedDay,int n) {

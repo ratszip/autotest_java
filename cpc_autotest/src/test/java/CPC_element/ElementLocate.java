@@ -80,13 +80,6 @@ public class ElementLocate {
 	public static String DESHARBOR="//label[text()='目的港']/following-sibling::input[1]";//目的港
 	
 	/******************************************/
-	public static String GSG_SERVICE="//label[text()='GSG']/following-sibling::div[1]";//GSG
-	public static String GSG_SERVICE_TEXT="//label[text()='GSG']/following-sibling::div[1]/div[1]";//GSG
-	public static String GSG_SERVICE_DOWN="//div[text()='6个月']";//GSG6个月
-	public static String FREE_MARK="//label[text()='免收款备注']/following-sibling::input[1]";//免收款备注
-	public static String DELIV_MARK="//label[text()='送货单标注']/following-sibling::input[1]";//送货单标注
-	public static String MAIN_MARK="//label[text()='备注']/following-sibling::input[1]";//备注
-	public static String UPRICE_MARK="//label[text()='单价备注']/following-sibling::input[1]";//单价备注
 	
 	public static String NETRUL_PAK="//*[@id='input-274']";//中性包装
 	public static String NETRUL_PAK_en="//*[@id='input-274']/following-sibling::div[1]";

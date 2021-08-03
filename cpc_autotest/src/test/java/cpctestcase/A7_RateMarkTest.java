@@ -103,25 +103,25 @@ public class A7_RateMarkTest extends PublicTests{
 	@Order(14)
 	@DisplayName("case_014_免收款备注")
 	public void freemark() throws InterruptedException {
-		wrtin(ElementLocate.FREE_MARK, "Free-test",2);
+		wrtin(ElementLocate.fieldLocateipt("免收款备注"), "Free-test",2);
     }
 	
 	@Test
 	@Order(15)
 	@DisplayName("case_015_送货单标注")
 	public void delimark() throws InterruptedException {
-		wrtin(ElementLocate.DELIV_MARK, "Deliv-test", 2);
+		wrtin(ElementLocate.fieldLocateipt("送货单标注"), "Deliv-test", 2);
     }
 	@Test
 	@Order(16)
 	@DisplayName("case_016_备注")
 	public void mainmark() throws InterruptedException {
-		wrtin(ElementLocate.MAIN_MARK, "MainMark-test",2);
+		wrtin(ElementLocate.fieldLocateipt("备注"), "MainMark-test",2);
     }
 	@Test
 	@Order(17)
 	@DisplayName("case_017_单价备注")
 	public void pricemark() throws InterruptedException {
-		wrtin(ElementLocate.UPRICE_MARK, "uprice-test",2);
+		wrtin(ElementLocate.fieldLocateipt("单价备注"), "uprice-test",2);
     }
 }

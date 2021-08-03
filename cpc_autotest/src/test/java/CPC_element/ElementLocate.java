@@ -1,5 +1,9 @@
 package CPC_element;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class ElementLocate {
 	
 	/**
@@ -17,7 +21,7 @@ public class ElementLocate {
 	}
 	
 	/***
-	 * input可输入下拉
+	 * input可输入可下拉
 	 * @param fieldname
 	 * @param fielddown
 	 * @return
@@ -71,14 +75,6 @@ public class ElementLocate {
 	public static String GROUP_BUSI_TEXT_A="//div[@class='row row--dense'][4]/div[2]/div/div/div/div[1]/input";//组别为A
 	/*********************************************/
 	
-
-
-
-	
-
-	public static String DEVNUM="//label[text()='开发编号']/following-sibling::input[1]";//开发编号
-	public static String DESHARBOR="//label[text()='目的港']/following-sibling::input[1]";//目的港
-	
 	/******************************************/
 	
 	public static String NETRUL_PAK="//*[@id='input-274']";//中性包装
@@ -112,6 +108,15 @@ public class ElementLocate {
 	public static String CANISTER="//*[@id'tab-1']/div[2]/div/div[1]/button[10]";//出缸筒子
 	public static String OLD_SIP="//*[@id'tab-1']/div[2]/div/div[1]/button[11]";//旧票出货信息
 	public static String WAREHOUSE_3="//*[@id'tab-1']/div[2]/div/div[1]/button[12]";//3号仓抽毛
+	//*[@id="tab-1"]/div[1]/div[1]/button[1]
+	
+	public static String buttonM(String fieldname) {
+		String[] buttox= {"新增细表","修改细表","删除","物料清单","挑批","旧票抽毛","抽毛","清货",
+				"新增色号","出缸筒子","旧票出货信息","3号仓抽毛"};
+		String xpath="";
+		return xpath;
+	}
+	
 	
 	/*************************************************细表***********************************************/
 	

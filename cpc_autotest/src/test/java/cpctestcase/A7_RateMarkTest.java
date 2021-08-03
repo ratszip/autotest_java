@@ -35,7 +35,7 @@ public class A7_RateMarkTest extends PublicTests{
 	@Order(4)
 	@DisplayName("case_004_目的港")
 	public void des() throws InterruptedException {
-		wrtin(ElementLocate.DESHARBOR, "DESHARBOR-test", 2);
+		wrtin(ElementLocate.fieldLocateipt("目的港"), "DESHARBOR-test", 2);
     }
 	
 	@Test
@@ -123,5 +123,11 @@ public class A7_RateMarkTest extends PublicTests{
 	@DisplayName("case_017_单价备注")
 	public void pricemark() throws InterruptedException {
 		wrtin(ElementLocate.fieldLocateipt("单价备注"), "uprice-test",2);
+    }
+	@Test
+	@Order(18)
+	@DisplayName("case_018_开发者编号")
+	public void devbh() throws InterruptedException {
+		wrtin(ElementLocate.fieldLocateipt("开发编号"), "uprice-test",2);
     }
 }

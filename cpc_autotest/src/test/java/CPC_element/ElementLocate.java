@@ -2,103 +2,116 @@ package CPC_element;
 
 public class ElementLocate {
 	/*******************开票客户***********************/
-	public static String CUS_NO="//*[@id=\"cust_no\"]";//开票客户
-	public static String KNITWEAR = "//*[@id=\"list-item-353-1\"]/div/div[1]";//开票-伟新有限公司
+	public static String CUS_NO="//*[@id='cust_no']";//开票客户
+	public static String KNITWEAR = "//div[contains(text(),'东莞伟展时装针织有限公司')]/parent::div";//开票-伟展
+	//v-card v-sheet theme--light
+	//v-snack__content
 	/************************************************/
 	public static String CUS_ORDER_NUM="//*[@id=\"ref_no\"]";//客户单号
 	/*******************开票检验***********************/
 	public static String LOGIN="//span[text()='Login']";//登录按钮
 	public static String INDEX="//*[@id=\"upwIndex\"]";//主页
 	public static String TITLE="//h2[text()='UPW信息管理系统网页面版']";//主页标题
-	public static String ICON="//*[@id=\"upwIndex\"]/div/nav/div[1]/div[1]/div[1]/button";//左菜单图标
-	public static String PRO_STORE="//*[@id=\"upwIndex\"]/div/nav/div[1]/div[2]/div[4]";//成品仓管理系统
-	public static String SALE_CONTRA="//*[@id=\"upwIndex\"]/div/nav/div[1]/div[2]/div[4]/div/div/div[2]/div[5]";//销售合同
-	public static String SALE_CONTRA_WR="//*[@id=\"upwIndex\"]/div/nav/div[1]/div[2]/div[4]/div/div/div[2]/div[5]/div/div[2]/div[2]";//销售合同录入
+	public static String ICON="//*[@id=\"upwIndex\"]/div/div/nav/div[1]/div[1]/div[1]/div[1]/button";//左菜单图标
+	public static String PRO_STORE="//div[contains(text(),'成品仓管理系统 ')]/parent::div";//成品仓管理系统
+	public static String SALE_CONTRA="//div[contains(text(),'销售合同')]/parent::div";//销售合同
+	public static String SALE_CONTRA_WR="//div[contains(text(),'销售合同录入')]/parent::a/i";//销售合同录入
 	/******************************************/
-
-	public static String ORDER_CATE="//*[@id=\"input-192\"]/../div[1]";//单号类别(内容)
-	public static String ORDER_CATE_DOWN="//*[@id=\"list-item-377-3\"]/div";//单号类别下拉某条
-	public static String CUS_ADDR= "//*[@id=\"input-199\"]";//客户地址
-	public static String SONO="//*[@id=\"input-200\"]";//SO.NO
+	public static String ORDER_CATE="//label[text()='单号类别']/following-sibling::div[1]/div";//单号类别(内容)
+	public static String ORDER_CATE_TAG="//label[text()='单号类别']";//单号类别标签
+	public static String ORDER_CATE_DOWN="//div[text()='Commission spinning']";//单号类别下拉某条
+	
+	public static String CUST_ORDER="//*[@id='custno']";//下单客户
+	public static String UPWKH2966 = "//div[contains(text(),'东莞升丽针织有限公司')]";//东莞升丽针织有限公司 
+	public static String CUS_ADDR_TAG="//label[contains(text(),'客户地址')]";//客户地址标签
+	public static String CUS_ADDR= "//label[contains(text(),'客户地址')]/following-sibling::input[1]";//客户地址内容
+	
+	public static String SONO="//label[text()='SO No']/following-sibling::input[1]";//SO No内容
+	public static String SONO_TAG="//label[text()='SO No']";//SO No标签
 	
 	/*******************联系人***********************/
-	public static String CONTACTS="//*[@id=\"input-202\"]";//联系人
-	public static String CONT_DOWN="//*[@id=\"list-item-396\"]/div";//联系人下拉某条
+	public static String CONTACTS="//label[text()='联系人']/following-sibling::input[1]";//联系人
+	public static String CONT_DOWN="//div[contains(text(),'曾广仲')]";//联系人下拉某条
 	/**********************************************/
 	
-	public static String PHONE_NUM="//*[@id=\"input-203\"]";//电话
-	public static String FAX_NUM="//*[@id=\"input-204\"]";//传真
+	public static String PHONE_NUM_TAG="//label[text()='客户电话']";//电话标签
+	public static String PHONE_NUM="//label[text()='客户电话']/following-sibling::input[1]";//电话号码
+	public static String FAX_NUM_TAG="//label[text()='客户传真']";//传真标签
+	public static String FAX_NUM="//label[text()='客户传真']/following-sibling::input[1]";//传真号码
 	
 	/*******************品牌***********************/
-	public static String BRAND="//*[@id=\"input-205\"]";//品牌栏
-	public static String BRAND_NOT="//*[@id=\"list-205\"]/div/div/div";//品牌栏内容选项no data available
+	public static String BRAND_TAG="//label[text()='品牌']";//品牌标签
+	public static String BRAND="//label[text()='品牌']/following-sibling::input[1]";//品牌
+	public static String BRAND_ST="//div[text()='Eddie Bauer'][@class='v-list-item__title']";//品牌Eddie Bauer
+	public static String BRAND_AP="//span[text()='AP']";//品牌AP
 	/*********************************************/
 	
-	
+	//div[@class='row row--dense'][4]/div[2]/div
 	public static String DELIVERY_WAY = "//*[@id=\"input-286\"]/parent::div";//交货方式
-	public static String DELIVERY_WAY_mk = "//*[@for='input-245'][@class='v-label v-label--active theme--light']";//标签
+	public static String DELIVERY_WAY_mk = "//label[text()='交货方式']";//标签
 	
 	/*******************下单***********************/
 	public static String PL_ORDER = "//*[@id=\"sam_no\"]/parent::div";//下单
 	public static String PL_ORDER_TEXT = "//*[@id=\"sam_no\"]/../div";//下单(内容)
-	public static String PL_ORDER_DOWN="//*[@id=\"list-item-538-0\"]";//下单下拉某条
-	public static String PL_ORDER_DOWN_TEXT="//*[@id=\"list-item-538-0\"]/div/div";//下单下拉某条内容
+	public static String PL_ORDER_DOWN="//div[text()='BONNY HUANG']";//下单下拉BONNY HUANG
 	/*********************************************/
 	
+	
+	
 	/*******************组别***********************/
-	public static String GROUP_BUSI_TEXT="//*[@id=\"input-212\"]/../div[1]";//组别(内容)
+	//public static String GROUP_BUSI_TEXT="//div[text()='C']";//组别为C
+	public static String GROUP_BUSI_TEXT="//div[@class='row row--dense'][4]/div[2]/div";
+	public static String GROUP_BUSI_TEXT_A="//div[@class='row row--dense'][4]/div[2]/div/div/div/div[1]/input";//组别为A
 	/*********************************************/
 	
 	public static String SALESMAN="//*[@id=\"salesman\"]/../div[1]";//销售(内容)
-	public static String SALE_CON_DATE="//*[@id=\"input-221\"]";//合同日期
-	public static String ORDER_DATE="//*[@id=\"input-222\"]";//订单日期
-	public static String ORDER_DATE_id="input-222";//订单日期id
-	public static String BOAT_DATE="//*[@id=\"input-223\"]";//船期
-	public static String BOAT_DATE_id="input-223";//船期id
+	public static String SALE_CON_DATE_TAG="//label[text()='合同日期']";//合同日期标签
+	public static String SALE_CON_DATE="//label[text()='合同日期']/following-sibling::input[1]";//合同日期
+	public static String ORDER_DATE_TAG="//label[text()='订单']";//订单日期标签
+	public static String ORDER_DATE="//label[text()='订单']/following-sibling::input[1]";//订单日期
+	public static String BOAT_DATE_TAG="//label[text()='船期']";//船期标签
+	public static String BOAT_DATE= "//label[text()='船期']/following-sibling::input[1]";//船期
 	
 	/********************类型**********************/
 	public static String CATEGORY="//*[@id=\"category\"]/parent::div";//类型
-	public static String G_STOCK="//*[@id=\"list-item-600-0\"]";//类型-取库存
-	public static String N_PRODUC="//*[@id=\"list-item-600-1\"]";//类型-需生产
+	public static String G_STOCK="//div[text()='取库存']";//类型-取库存
+	public static String N_PRODUC="//div[text()='需生产']";//类型-需生产
 	/********************************************/
 	
 	/********************年份**********************/
-	public static String YEAR="//*[@id=\"input-224\"]/parent::div";//年份
-	public static String YEAR_TEXT="//*[@id=\"input-224\"]/../div[1]";//年份内容		
-	public static String YEAR_DOWN="//*[@id=\"list-item-606-1\"]";//年份下拉某项
-	public static String YEAR_DOWN_TEXT="//*[@id=\"list-item-606-1\"]/div/div";//年份下拉某项内容	
+	public static String YEA_TAG="//label[text()='年份']";//年份标签
+	public static String YEAR="//label[text()='年份']/following-sibling::div[1]";//年份
+	public static String YEAR_TEXT="//label[text()='年份']/following-sibling::div[1]/div[1]";//年份内容
+	public static String YEAR_DOWN="//div[text()=2022]";//年份下拉某项
 	/********************************************/
 
 	/********************季度**********************/
-	public static String SEASON="//*[@id=\"input-227\"]/parent::div";//季度
-	public static String SEASON_TEXT="//*[@id=\"input-227\"]/../div[1]";//季度内容
-	public static String SEASON_DOWN="//*[@id=\"list-item-630-0\"]";//季度下拉某项
-	public static String SEASON_DOWN_TEXT="//*[@id=\"list-item-630-0\"]/div/div";//季度下拉某项内容
+	public static String SEASON="//label[text()='季度']/following-sibling::div[1]";//季度
+	public static String SEASON_TEXT="//label[text()='季度']/following-sibling::div[1]/div[1]";//季度内容
+	public static String SEASON_DOWN="//div[text()='Spring/Summer']";//季度下拉某项
 	/******************************************/
 	
 	/********************误差率**********************/
-	public static String RATE_M="//*[@id=\"input-231\"]/parent::div";//误差率
-	public static String RATE_M_TEXT="//*[@id=\"input-231\"]/../div[1]";//误差率内容
-	public static String RATE_M_DOWN="//*[@id=\"list-item-636-2\"]";//误差率下拉某项
-	public static String RATE_M_DOWN_TEXT="//*[@id=\"list-item-636-2\"]/div/div";//误差率下拉某项内容
+	public static String RATE_M="//label[text()='误差率']/following-sibling::div[1]";//误差率
+	public static String RATE_M_TEXT="//label[text()='误差率']/following-sibling::div[1]/div[1]";//误差率内容
+	public static String RATE_M_DOWN="//div[text()='0.05']";//误差率下拉某项
 	/******************************************/
 	
-	public static String DEVNUM="//*[@id='input-231']";//开发编号
-	public static String DESHARBOR="//*[@id='input-234']";//目的港
+	public static String DEVNUM="//label[text()='开发编号']/following-sibling::input[1]";//开发编号
+	public static String DESHARBOR="//label[text()='目的港']/following-sibling::input[1]";//目的港
+	
 	
 	
 	/********************状态-主表**********************/
-	public static String STATE_M="//*[@id=\"input-235\"]/parent::div";//状态-主表
-	public static String STATE_M_TEXT="//*[@id=\"input-235\"]/../div[1]";//状态-主表内容
-	public static String STATE_M_DOWN="//*[@id=\"list-item-645-1\"]";//状态-主表下拉某项
-	public static String STATE_M_DOWN_TEXT="//*[@id=\"list-item-645-1\"]/div/div";//状态-主表下拉某项内容
+	public static String STATE_M="//label[text()='状态']/following-sibling::div[1]";//状态-主表
+	public static String STATE_M_TEXT="//label[text()='状态']/following-sibling::div[1]/div[1]";//状态-主表内容
+	public static String STATE_M_DOWN="//div[text()='在用(U)'][@class='v-list-item__title']";//状态-主表下拉某条
 	/******************************************/
 	
 	/********************贸易方式**********************/
-	public static String TRADE_M="//*[@id=\"method\"]/parent::div";//贸易方式
-	public static String TRADE_M_TEXT="//*[@id=\"method\"]/../div[1]";//贸易方式内容
-	public static String TRADE_M_DOWN="//*[@id=\"list-item-653-0\"]";//贸易方式下拉某项
-	public static String TRADE_M_DOWN_TEXT="//*[@id=\"list-item-653-0\"]/div/div";//贸易方式下拉某项内容
+	public static String TRADE_M="//label[text()='贸易方式']/following-sibling::div[1]";//贸易方式
+	public static String TRADE_M_TEXT="//label[text()='贸易方式']/following-sibling::div[1]/div[1]";//贸易方式内容
+	public static String TRADE_M_DOWN="//div[text()='内销(D)']";//贸易方式下拉某项
 	/******************************************/
 	
 	/********************贸易条款**********************/

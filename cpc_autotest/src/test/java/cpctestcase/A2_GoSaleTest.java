@@ -25,8 +25,14 @@ public class A2_GoSaleTest extends PublicTests{
     @Order(1)
     @DisplayName("case_001_打开销售合同录入")
     public void A2_test() throws InterruptedException {
-		d.findElement(By.xpath(ElementLocate.ICON)).click();//打开左侧菜单
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.PRO_STORE)));
+		WebElement ele=d.findElement(By.xpath(ElementLocate.ICON));
+		
+		
+		ele.click();//打开左侧菜单
+		
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.PRO_STORE)));
+		Thread.sleep(1000);
+		
 		d.findElement(By.xpath(ElementLocate.PRO_STORE)).click();//产品仓系统
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.SALE_CONTRA)));
 		d.findElement(By.xpath(ElementLocate.SALE_CONTRA)).click();//销售合同
@@ -34,8 +40,10 @@ public class A2_GoSaleTest extends PublicTests{
 		d.findElement(By.xpath(ElementLocate.SALE_CONTRA_WR)).click();//销售合同录入
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("con_no")));
 		Boolean infosale=d.getPageSource().contains("*销售合同");
+		
 		assertTrue(infosale,"确定页面已经打开");
     }
+	//#menubox > div > div.v-list-item__title
     
     @Test
     @Order(2)

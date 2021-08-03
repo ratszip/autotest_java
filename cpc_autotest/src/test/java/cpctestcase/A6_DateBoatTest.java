@@ -29,7 +29,13 @@ public class A6_DateBoatTest extends PublicTests{
 	public void orderdt() {
 		WebElement ordate=d.findElement(By.xpath(ElementLocate.ORDER_DATE));
 		String nextdate=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),1);
-		String js="var q=document.getElementById('"+ElementLocate.ORDER_DATE_id+"');q.value="+'\"'+nextdate+'\"';
+		String js="document.evaluate(\""+
+		ElementLocate.ORDER_DATE+
+		"\",document).iterateNext().value="+
+		"'"+nextdate+"'";
+		
+		
+		
 		JavascriptExecutor driver_js=((JavascriptExecutor) d);
 		driver_js.executeScript(js);
 		assertEquals(ordate.getAttribute("value"),nextdate);
@@ -39,11 +45,14 @@ public class A6_DateBoatTest extends PublicTests{
 	@Test
 	@Order(2)
 	public void btdt() {
-		WebElement btdate=d.findElement(By.id(ElementLocate.BOAT_DATE_id));
+		WebElement btdate=d.findElement(By.xpath(ElementLocate.BOAT_DATE));
 		String next2date=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),2);
-		String js="var q=document.getElementById('"+ElementLocate.BOAT_DATE_id+"');q.value="+'\"'+next2date+'\"';
-		JavascriptExecutor driver_js=((JavascriptExecutor) d);
-		driver_js.executeScript(js);
+		String js2="document.evaluate(\""+
+		ElementLocate.BOAT_DATE+
+		"\",document).iterateNext().value="+
+		"'"+next2date+"'";
+		JavascriptExecutor driver_js2=((JavascriptExecutor) d);
+		driver_js2.executeScript(js2);
 		assertEquals(btdate.getAttribute("value"),next2date);
 	}
 	

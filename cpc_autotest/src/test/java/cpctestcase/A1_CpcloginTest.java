@@ -11,7 +11,7 @@ import com.cpc.Util.PublicData;
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -42,6 +42,6 @@ class A1_CpcloginTest extends PublicTests
 		WebDriverWait wait = new WebDriverWait(d, 10);	
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.INDEX)));	
 		WebElement info=d.findElement(By.xpath(ElementLocate.TITLE));
-		assertFalse(info.isDisplayed(),"显示首页信息");
+		assertTrue(info.isDisplayed(),"显示首页信息");
     }
 }

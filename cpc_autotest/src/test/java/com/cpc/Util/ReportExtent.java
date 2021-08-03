@@ -2,6 +2,7 @@ package com.cpc.Util;
 
 import java.io.File;
 import java.util.Date;
+import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -37,7 +38,7 @@ public class ReportExtent implements TestWatcher
 
 	        // step log
 	        test.log(LogStatus.FAIL, cause);
-	        test.log(LogStatus.INFO,"ScreenShot Blow:"+test.addScreenCapture("..\\"+picpath(d,context.getDisplayName())));
+	       // test.log(LogStatus.INFO,"ScreenShot Blow:"+test.addScreenCapture("..\\"+picpath(d,context.getDisplayName())));
 	        flushReports(extent, test);
 	        
 	}
@@ -68,5 +69,17 @@ public class ReportExtent implements TestWatcher
     }
         
     }
+
+	@Override
+	public void testDisabled(ExtensionContext context, Optional<String> reason) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testAborted(ExtensionContext context, Throwable cause) {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

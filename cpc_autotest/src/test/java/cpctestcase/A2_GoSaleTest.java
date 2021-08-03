@@ -26,31 +26,26 @@ public class A2_GoSaleTest extends PublicTests{
     @DisplayName("case_001_打开销售合同录入")
     public void A2_test() throws InterruptedException {
 		WebElement ele=d.findElement(By.xpath(ElementLocate.ICON));
-		
-		
 		ele.click();//打开左侧菜单
-		
-		//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.PRO_STORE)));
-		Thread.sleep(1000);
-		
 		d.findElement(By.xpath(ElementLocate.PRO_STORE)).click();//产品仓系统
+		Thread.sleep(100);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.SALE_CONTRA)));
 		d.findElement(By.xpath(ElementLocate.SALE_CONTRA)).click();//销售合同
+		Thread.sleep(100);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.SALE_CONTRA_WR)));
 		d.findElement(By.xpath(ElementLocate.SALE_CONTRA_WR)).click();//销售合同录入
+		Thread.sleep(100);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("con_no")));
 		Boolean infosale=d.getPageSource().contains("*销售合同");
-		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.DELIVERY_WAY_mk)));
 		assertTrue(infosale,"确定页面已经打开");
     }
-	//#menubox > div > div.v-list-item__title
     
     @Test
     @Order(2)
     @DisplayName("case_002_已自动生成合同日期")
     public void salesDate() throws InterruptedException {
-    	WebElement htdate = d.findElement(By.xpath(ElementLocate.SALE_CON_DATE));
-    	assertTrue(htdate.getAttribute("value").contains(CPCDateUtils.getCurDate2()),"合同日期");
+    	assertBoolean(ElementLocate.fieldLocateipt("合同日期"), CPCDateUtils.getCurDate2(), 2);
 
     }
 }

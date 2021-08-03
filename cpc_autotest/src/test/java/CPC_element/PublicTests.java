@@ -11,9 +11,11 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -40,12 +42,10 @@ public class PublicTests {
 	 * @param eletext     选项框内容
 	 * @param eledown     选项框下拉项目
 	 * @param eledowntext 选项框下拉项目的内容
-	 * @param shotname    截图保存的名称
 	 * @param atr         获取文本方式
 	 * @throws InterruptedException
 	 */
-	public void selecpare(String elexpath, String eletext, String downxpath, int atr)
-			throws InterruptedException {
+	public void selecpare(String elexpath, String eletext, String downxpath, int atr) throws InterruptedException {
 		vele = d.findElement(By.xpath(elexpath));
 		vele.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
@@ -53,14 +53,40 @@ public class PublicTests {
 		veledown = d.findElement(By.xpath(downxpath));
 		compare = d.findElement(By.xpath(downxpath)).getText();
 		veledown.click();
+		Thread.sleep(100);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(eletext)));
 		veletext = d.findElement(By.xpath(eletext));
 		textoratrEq(elexpath, atr, compare);
 	}
 
-	public void selecpare(String elexpath, String downxpath,  int atr) throws InterruptedException {
+	public void selecpare(String[] choostore, int atr) throws InterruptedException {
+		vele = d.findElement(By.xpath(choostore[0]));
+		vele.click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(choostore[1])));
+		Thread.sleep(50);
+		veledown = d.findElement(By.xpath(choostore[1]));
+		compare = d.findElement(By.xpath(choostore[1])).getText();
+		// 如果页面有相同的选项，则直接TAB键
+		try {
+			veledown.click();
+		} catch (ElementClickInterceptedException e) {
+			new Actions(d).sendKeys(Keys.TAB).perform();
+		}
+		Thread.sleep(100);
+		if (choostore.length == 3) {
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(choostore[2])));
+			textoratrEq(choostore[2], atr, compare);
+		} else {
+			Thread.sleep(100);
+			textoratrEq(choostore[0], atr, compare);
+		}
+
+	}
+
+	public void selecpare(String elexpath, String downxpath, int atr) throws InterruptedException {
 		vele = d.findElement(By.xpath(elexpath));
 		vele.click();
+		Thread.sleep(100);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
 		Thread.sleep(50);
 		veledown = d.findElement(By.xpath(downxpath));
@@ -70,34 +96,15 @@ public class PublicTests {
 	}
 
 	/**
-	 * 已下拉，选择下拉项
-	 * 
-	 * @param elexpath
-	 * @param shotname
-	 * @param srcpath
-	 * @throws InterruptedException
-	 */
-	/*public void selecpare(String elexpath, String srcpath) throws InterruptedException {
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elexpath)));
-		veledown = d.findElement(By.xpath(elexpath));
-		compare = veledown.getText();
-		veledown.click();
-		Thread.sleep(200);
-		textoratrEq(srcpath, 2, compare);
-	}*/
-
-	/**
 	 * no data available
 	 * 
-	 * @param ele      输入框
-	 * @param eledown  输入框下拉项
-	 * @param shotname 错误截图名称
-	 * @param atr      获取内容的方式
-	 * @param zdy      自定义断言的文本
+	 * @param ele     输入框
+	 * @param eledown 输入框下拉项
+	 * @param atr     获取内容的方式
+	 * @param zdy     自定义断言的文本
 	 * @throws InterruptedException
 	 */
-	public void selecpare(String elexpath, String downpath, int atr, String zdy)
-			throws InterruptedException {
+	public void selecpare(String elexpath, String downpath, int atr, String zdy) throws InterruptedException {
 		vele = d.findElement(By.xpath(elexpath));
 		vele.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
@@ -151,7 +158,6 @@ public class PublicTests {
 	 * 删除文本内容
 	 * 
 	 * @param ele
-	 * @param shotname
 	 * @param atr
 	 */
 	public void delet(String xpath, int atr) {
@@ -176,12 +182,14 @@ public class PublicTests {
 	 * 输入文本内容
 	 * 
 	 * @param ele
-	 * @param shotname
 	 * @param atr
+	 * @throws InterruptedException
 	 */
-	public void wrtin(String xpath, String text, int atr) {
+	public void wrtin(String xpath, String text, int atr) throws InterruptedException {
 		vele = d.findElement(By.xpath(xpath));
+		Thread.sleep(100);
 		vele.sendKeys(text);
+		Thread.sleep(100);
 		vele.sendKeys(Keys.TAB);
 		textoratrEq(xpath, atr, text);
 	}
@@ -192,12 +200,10 @@ public class PublicTests {
 	 * @param xpath
 	 * @param downpath
 	 * @param text
-	 * @param shotname
 	 * @param atr
 	 * @throws InterruptedException
 	 */
-	public void wrtin(String xpath, String downpath, String text, int atr)
-			throws InterruptedException {
+	public void wrtin(String xpath, String downpath, String text, int atr) throws InterruptedException {
 		vele = d.findElement(By.xpath(xpath));
 		vele.sendKeys(text);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
@@ -210,13 +216,28 @@ public class PublicTests {
 		textoratrEq(xpath, atr, compare);
 	}
 
+	public void assertBoolean(String xpath, String text, int atr) {
+		vele = d.findElement(By.xpath(xpath));
+
+		switch (atr) {
+		case 1:
+			assertTrue(vele.getText().contains(text));
+			errorListener();
+			break;
+		case 2:
+			// System.out.println(vele.getAttribute("value"));
+			assertTrue(vele.getAttribute("value").contains(text));
+			errorListener();
+			break;
+		}
+	}
+
 	/**
 	 * 判断用getText还是getAtrribute,断言Equal
 	 * 
 	 * @param ele
 	 * @param atr
 	 * @param compare
-	 * @param shotname
 	 */
 	public void textoratrEq(String xpath, int atr, String compare) {
 		// wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
@@ -241,7 +262,6 @@ public class PublicTests {
 	 * @param ele
 	 * @param atr
 	 * @param compare
-	 * @param shotname
 	 */
 	public void textoratrNEq(String xpath, int atr, String compare) {
 		vele = d.findElement(By.xpath(xpath));
@@ -274,8 +294,7 @@ public class PublicTests {
 	 */
 	public void errorListener() {
 		Boolean b;
-		if (d.getPageSource().contains("错误")
-				|| d.getPageSource().contains("异常")) {
+		if (d.getPageSource().contains("错误") || d.getPageSource().contains("异常")) {
 			b = false;
 		} else {
 			b = true;

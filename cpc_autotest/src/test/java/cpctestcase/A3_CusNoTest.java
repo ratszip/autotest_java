@@ -9,10 +9,7 @@ import CPC_element.PublicTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 @DisplayName("开票客户")
@@ -23,16 +20,8 @@ public class A3_CusNoTest extends PublicTests{
 	@Order(1)
 	@DisplayName("case_001_录入开票客户")
 	   public void B1_test() throws InterruptedException {
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.DELIVERY_WAY_mk)));
-		Thread.sleep(100);
-		WebElement kp=d.findElement(By.xpath(ElementLocate.CUS_NO));
-		kp.sendKeys("伟展");
-		
-		
-		//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.KNITWEAR)));
-		Thread.sleep(2000);
-		WebElement wz=d.findElement(By.xpath(ElementLocate.KNITWEAR));
-		wz.click();
+		Thread.sleep(1000);
+		wrtin(ElementLocate.fieldLocateipt("开票客户"), "东莞伟展时装针织有限公司", 2);
 		Thread.sleep(100);
     }
 	
@@ -40,45 +29,40 @@ public class A3_CusNoTest extends PublicTests{
 	@Order(2)
 	@DisplayName("case_002_检查客户地址")
 	public void advf() throws InterruptedException {
-		textoratrNEq(ElementLocate.CUS_ADDR, 2, "");
+		textoratrNEq(ElementLocate.fieldLocateipt("客户地址"), 2, "");
 	}
 	
 	@Test
 	@Order(3)
 	@DisplayName("case_003_检查电话")
 	public void phvf() throws InterruptedException {
-		textoratrNEq(ElementLocate.PHONE_NUM, 2, "");
+		textoratrNEq(ElementLocate.fieldLocateipt("客户电话"), 2, "");
 	}
-	/*@Test
+	
+	@Test
 	@Order(4)
-	@DisplayName("case_004_检查传真")
-	public void faxvf() throws InterruptedException {
-		textoratrNEq(ElementLocate.FAX_NUM, 2, "", "传真不为空");
-	}*/
+	@DisplayName("case_004_检查下单")
+	public void xdvf() throws InterruptedException {
+		textoratrNEq(ElementLocate.fieldLocate("下单"), 1, "");
+	}
 	@Test
 	@Order(5)
-	@DisplayName("case_005_检查下单")
-	public void xdvf() throws InterruptedException {
-		textoratrNEq(ElementLocate.PL_ORDER_TEXT, 1, "");
-	}
-	@Test
-	@Order(6)
-	@DisplayName("case_006_检查组别")
+	@DisplayName("case_005_检查组别")
 	public void zbvf() throws InterruptedException {
 		textoratrNEq(ElementLocate.GROUP_BUSI_TEXT_A, 2, "");
 	}
 	
 	@Test
-	@Order(7)
-	@DisplayName("case_007_检查营业")
+	@Order(6)
+	@DisplayName("case_006_检查营业")
 	public void savf() throws InterruptedException {
-		textoratrNEq(ElementLocate.SALESMAN, 1, "");
+		textoratrNEq(ElementLocate.fieldLocate("营业"), 1, "");
 	}
 	@Test
-	@Order(8)
-	@DisplayName("case_008_检查订单日期")
+	@Order(7)
+	@DisplayName("case_007_检查订单日期")
 	public void ddvf() throws InterruptedException {
-		textoratrEq(ElementLocate.ORDER_DATE, 2, CPCDateUtils.getCurDate());
+		textoratrEq(ElementLocate.fieldLocateipt("订单"), 2, CPCDateUtils.getCurDate());
 	}
 	
 }

@@ -20,7 +20,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	
 	@BeforeAll
 	public void set() {
-		beforemap=before_verify(ElementLocate.GROUP_BUSI_TEXT,ElementLocate.SALESMAN);
+		beforemap=before_verify(ElementLocate.GROUP_BUSI_TEXT,ElementLocate.fieldLocate("营业"));
 	}
 	
 	@Test
@@ -33,9 +33,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Test
 	@Order(2)
 	public void xiadan() throws InterruptedException {
-		selecpare(ElementLocate.PL_ORDER, 
-				ElementLocate.PL_ORDER_DOWN, 
-				1);
+		selecpare(ElementLocate.chooseVeryf("下单", "BONNY HUANG"), 1);
 	}
 	
 	@DisplayName("case_003下单带出组别")
@@ -57,6 +55,6 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Test
 	@Order(5)
 	public void cate() throws InterruptedException {
-		selecpare(ElementLocate.CATEGORY, ElementLocate.G_STOCK, 1);
+		selecpare(ElementLocate.chooseVeryf("类型", "取库存"), 1);
 	}
 }

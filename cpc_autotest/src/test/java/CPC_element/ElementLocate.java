@@ -69,6 +69,12 @@ public class ElementLocate {
 	public static String GROUP_BUSI_TEXT_A="//div[@class='row row--dense'][4]/div[2]/div/div/div/div[1]/input";//组别为A
 	/*********************************************/
 	
+	
+	//主表按钮:查询新增...
+	public static String buttoz(String fieldname) {
+		return "//span[text()='"+fieldname+"']/parent::div[1]";
+	}
+	
 	/**
 	 * 主表的checkbox的xpath
 	 */

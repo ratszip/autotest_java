@@ -1,9 +1,5 @@
 package CPC_element;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 public class ElementLocate {
 	
 	/**
@@ -46,8 +42,6 @@ public class ElementLocate {
 		return "//label[text()='"+fieldname+"']/following-sibling::input[1]";
 	}
 
-
-	/************************************************/
 	
 	/*******************开票检验***********************/
 	public static String LOGIN="//span[text()='Login']";//登录按钮
@@ -75,46 +69,29 @@ public class ElementLocate {
 	public static String GROUP_BUSI_TEXT_A="//div[@class='row row--dense'][4]/div[2]/div/div/div/div[1]/input";//组别为A
 	/*********************************************/
 	
-	/******************************************/
-	
-	public static String NETRUL_PAK="//*[@id='input-274']";//中性包装
-	public static String NETRUL_PAK_en="//*[@id='input-274']/following-sibling::div[1]";
-	public static String VARY_NEDL="//*[@id='input-276']";//过验针机
-	public static String VARY_NEDL_en="//*[@id='input-276']/following-sibling::div[1]";
-	public static String FREIGHT_CONTAIN="//*[@id='input-278']";//含运费
-	public static String FREIGHT_CONTAIN_en="//*[@id='input-278']/following-sibling::div[1]";
-	public static String CARGO_GROSS="//*[@id='input-280']";//货毛
-	public static String CARGO_GROSS_en="//*[@id='input-280']/following-sibling::div[1]";
-	public static String FREE_CHEK="//*[@id='input-282']";//免收款
-	public static String FREE_CHEK_en="//*[@id='input-282']/following-sibling::div[1]";
-	public static String DOUBLING_M="//*[@id='input-285']";//等通知并线
-	public static String DOUBLING_M_en="//*[@id='input-285']/following-sibling::div[1]";
-	public static String WAIT_PRODUCT="//*[@id='input-288']";//等通知生产
-	public static String WAIT_PRODUCT_en="//*[@id='input-288']/following-sibling::div[1]";
-	public static String CUS_SPI="//*[@id='input-290']";//客人色排纺
-	public static String CUS_SPI_en="//*[@id='input-290']/following-sibling::div[1]";
-	public static String NOCOUNT="//*[@id='input-292']";//不统计
-	public static String NOCOUNT_en="//*[@id='input-292']/following-sibling::div[1]";
-	
-	public static String ADD_X="//*[@id='tab-1']/div[2]/div/div[1]/button[1]";//新增细表
-	public static String MODIFY_X="//*[@id'tab-1']/div[2]/div/div[1]/button[2]";//修改
-	public static String DELETE="//*[@id'tab-1']/div[2]/div/div[1]/button[3]";//删除
-	public static String BOM="//*[@id'tab-1']/div[2]/div/div[1]/button[4]";//物料清单
-	public static String TAKE_BATCH="//*[@id'tab-1']/div[2]/div/div[1]/button[5]";//挑批
-	public static String OLD_WOOL="//*[@id'tab-1']/div[2]/div/div[1]/button[6]";//旧票抽毛
-	public static String TAKE_WOOL="//*[@id'tab-1']/div[2]/div/div[1]/button[7]";//抽毛
-	public static String CLEAR_STOCK="//*[@id'tab-1']/div[2]/div/div[1]/button[8]";//清货
-	public static String ADD_COLOR="//*[@id'tab-1']/div[2]/div/div[1]/button[9]";//新增色号
-	public static String CANISTER="//*[@id'tab-1']/div[2]/div/div[1]/button[10]";//出缸筒子
-	public static String OLD_SIP="//*[@id'tab-1']/div[2]/div/div[1]/button[11]";//旧票出货信息
-	public static String WAREHOUSE_3="//*[@id'tab-1']/div[2]/div/div[1]/button[12]";//3号仓抽毛
-	//*[@id="tab-1"]/div[1]/div[1]/button[1]
-	
+	/**
+	 * 主表的checkbox的xpath
+	 */
+	public static String[] checkpath(String fieldname) {
+		String[] field = new String[2];
+		field[1]="//label[text()='"+fieldname+"']/preceding-sibling::div[1]";
+		field[0]="//label[text()='"+fieldname+"']/preceding-sibling::div[1]/input[1]";
+		return field;
+	}
+	/**
+	 * 细表按钮：新增修改...
+	 * @param fieldname 按钮名称
+	 * @return 按钮的xpath
+	 */
 	public static String buttonM(String fieldname) {
 		String[] buttox= {"新增细表","修改细表","删除","物料清单","挑批","旧票抽毛","抽毛","清货",
 				"新增色号","出缸筒子","旧票出货信息","3号仓抽毛"};
-		String xpath="";
-		return xpath;
+		for (int i = 0; i < buttox.length; i++) {
+			if(buttox[i]==fieldname){
+				return "//*[@id'tab-1']/div[2]/div/div[1]/button["+(i+1)+"]";
+			}
+		}
+		return "wrong button";
 	}
 	
 	

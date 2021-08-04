@@ -27,7 +27,7 @@ import com.relevantcodes.extentreports.NetworkMode;
 @TestMethodOrder(OrderAnnotation.class)
 public class PublicTests {
 	WebDriver d = PublicData.d;
-	WebDriverWait wait = new WebDriverWait(d, 3);
+	WebDriverWait wait = new WebDriverWait(d, 5);
 	WebElement vele;
 	WebElement veledown;
 	WebElement veletext;
@@ -279,9 +279,9 @@ public class PublicTests {
 		}
 	}
 
-	public void checkboxSelec(String xpath, String xpathen) {
-		vele = d.findElement(By.xpath(xpath));
-		veletext = d.findElement(By.xpath(xpathen));
+	public void checkboxSelec(String[] field) {
+		vele = d.findElement(By.xpath(field[0]));
+		veletext = d.findElement(By.xpath(field[1]));
 		if (!vele.isSelected()) {
 			veletext.click();
 			assertTrue(vele.isSelected());

@@ -16,9 +16,9 @@ import org.junit.runner.RunWith;
 			A3_CusNoTest.class,
 			A4_RefContTest.class,
 			A5_SaleGrpXTest.class,
-			A6_DateBoatTest.class/*,
+			A6_DateBoatTest.class,
 			A7_RateMarkTest.class,
-			A8_CheckBoxMTest.class,
+			A8_CheckBoxMTest.class/*,
 			B01_AddxTableTest.class*/
 		}
 )

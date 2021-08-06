@@ -20,7 +20,7 @@ import CPC_element.PublicTests;
 @DisplayName("进入销售合同录入")
 public class A2_GoSaleTest extends PublicTests{
 	WebDriver d=PublicData.d;
-	WebDriverWait wait=new WebDriverWait(d, 3);
+	WebDriverWait wait=new WebDriverWait(d, 7);
 	@Test
     @Order(1)
     @DisplayName("case_001_打开销售合同录入")
@@ -45,7 +45,7 @@ public class A2_GoSaleTest extends PublicTests{
     @Order(2)
     @DisplayName("case_002_已自动生成合同日期")
     public void salesDate() throws InterruptedException {
-    	assertBoolean(ElementLocate.fieldLocateipt("合同日期"), CPCDateUtils.getCurDate2(), 2);
+    	assertBoolean(ElementLocate.fieldLocate("合同日期"), CPCDateUtils.getCurDate2(), 2);
 
     }
 }

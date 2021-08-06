@@ -21,7 +21,7 @@ public class A3_CusNoTest extends PublicTests{
 	@DisplayName("case_001_录入开票客户")
 	   public void B1_test() throws InterruptedException {
 		Thread.sleep(1000);
-		wrtin(ElementLocate.fieldLocateipt("开票客户"), "东莞伟展时装针织有限公司", 2);
+		wrtin(ElementLocate.fieldLocate("开票客户"), "东莞伟展时装针织有限公司", 2);
 		Thread.sleep(100);
     }
 	
@@ -29,14 +29,14 @@ public class A3_CusNoTest extends PublicTests{
 	@Order(2)
 	@DisplayName("case_002_检查客户地址")
 	public void advf() throws InterruptedException {
-		textoratrNEq(ElementLocate.fieldLocateipt("客户地址"), 2, "");
+		textoratrNEq(ElementLocate.fieldLocate("客户地址"), 2, "");
 	}
 	
 	@Test
 	@Order(3)
 	@DisplayName("case_003_检查电话")
 	public void phvf() throws InterruptedException {
-		textoratrNEq(ElementLocate.fieldLocateipt("客户电话"), 2, "");
+		textoratrNEq(ElementLocate.fieldLocate("客户电话"), 2, "");
 	}
 	
 	@Test
@@ -49,7 +49,7 @@ public class A3_CusNoTest extends PublicTests{
 	@Order(5)
 	@DisplayName("case_005_检查组别")
 	public void zbvf() throws InterruptedException {
-		textoratrNEq(ElementLocate.GROUP_BUSI_TEXT_A, 2, "");
+		textoratrNEq(ElementLocate.GROUP_BUSI_TEXT, 2, "");
 	}
 	
 	@Test
@@ -62,7 +62,7 @@ public class A3_CusNoTest extends PublicTests{
 	@Order(7)
 	@DisplayName("case_007_检查订单日期")
 	public void ddvf() throws InterruptedException {
-		textoratrEq(ElementLocate.fieldLocateipt("订单"), 2, CPCDateUtils.getCurDate());
+		textoratrEq(ElementLocate.fieldLocate("订单"), 2, CPCDateUtils.getCurDate());
 	}
 	
 }

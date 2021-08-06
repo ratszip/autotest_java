@@ -27,10 +27,10 @@ public class A6_DateBoatTest extends PublicTests{
 	@Test
 	@Order(1)
 	public void orderdt() {
-		WebElement ordate=d.findElement(By.xpath(ElementLocate.fieldLocateipt("订单")));
+		WebElement ordate=d.findElement(By.xpath(ElementLocate.fieldLocate("订单")));
 		String nextdate=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),1);
 		String js="document.evaluate(\""+
-		ElementLocate.fieldLocateipt("订单")+
+		ElementLocate.fieldLocate("订单")+
 		"\",document).iterateNext().value="+
 		"'"+nextdate+"'";
 		JavascriptExecutor driver_js=((JavascriptExecutor) d);
@@ -42,10 +42,10 @@ public class A6_DateBoatTest extends PublicTests{
 	@Test
 	@Order(2)
 	public void btdt() {
-		WebElement btdate=d.findElement(By.xpath(ElementLocate.fieldLocateipt("船期")));
+		WebElement btdate=d.findElement(By.xpath(ElementLocate.fieldLocate("船期")));
 		String next2date=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),2);
 		String js2="document.evaluate(\""+
-		ElementLocate.fieldLocateipt("船期")+
+		ElementLocate.fieldLocate("船期")+
 		"\",document).iterateNext().value="+
 		"'"+next2date+"'";
 		JavascriptExecutor driver_js2=((JavascriptExecutor) d);

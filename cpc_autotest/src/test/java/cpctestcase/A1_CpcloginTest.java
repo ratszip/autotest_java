@@ -37,7 +37,7 @@ class A1_CpcloginTest extends PublicTests
 		usrname.sendKeys("zhipengxu");
 		WebElement pswd = d.findElement(By.id("password"));
 		pswd.sendKeys("xuzhipeng123");
-		WebElement login = d.findElement(By.xpath(ElementLocate.LOGIN));
+		WebElement login = d.findElement(By.xpath(ElementLocate.rtTextlocat("Login")));
 		login.click();
 		WebDriverWait wait = new WebDriverWait(d, 10);	
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.INDEX)));	

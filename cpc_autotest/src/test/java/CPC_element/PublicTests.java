@@ -41,25 +41,24 @@ public class PublicTests {
 	 * @param ele         选项框
 	 * @param eletext     选项框内容
 	 * @param eledown     选项框下拉项目
-	 * @param eledowntext 选项框下拉项目的内容
 	 * @param atr         获取文本方式
 	 * @throws InterruptedException
 	 */
-	public void selecpare(String elexpath, String eletext, String downxpath, int atr) throws InterruptedException {
-		vele = d.findElement(By.xpath(elexpath));
-		vele.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
-		Thread.sleep(50);
-		veledown = d.findElement(By.xpath(downxpath));
-		compare = d.findElement(By.xpath(downxpath)).getText();
-		veledown.click();
-		Thread.sleep(100);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(eletext)));
-		veletext = d.findElement(By.xpath(eletext));
-		textoratrEq(elexpath, atr, compare);
-	}
+//	public void selecpare(String elexpath, String eletext, String downxpath, int atr) throws InterruptedException {
+//		vele = d.findElement(By.xpath(elexpath));
+//		vele.click();
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
+//		Thread.sleep(50);
+//		veledown = d.findElement(By.xpath(downxpath));
+//		compare = d.findElement(By.xpath(downxpath)).getText();
+//		veledown.click();
+//		Thread.sleep(100);
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(eletext)));
+//		veletext = d.findElement(By.xpath(eletext));
+//		textoratrEq(elexpath, atr, compare);
+//	}
 
-	public void selecpare(String[] choostore, int atr) throws InterruptedException {
+	public void selecpare(String[] choostore) throws InterruptedException {
 		vele = d.findElement(By.xpath(choostore[0]));
 		vele.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(choostore[1])));
@@ -73,12 +72,12 @@ public class PublicTests {
 			new Actions(d).sendKeys(Keys.TAB).perform();
 		}
 		Thread.sleep(100);
-		if (choostore.length == 3) {
+		if (vele.getTagName().equals("div")) {
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(choostore[2])));
-			textoratrEq(choostore[2], atr, compare);
+			textoratrEq(choostore[2], 1, compare);
 		} else {
 			Thread.sleep(100);
-			textoratrEq(choostore[0], atr, compare);
+			textoratrEq(choostore[0], 2, compare);
 		}
 
 	}
@@ -179,7 +178,7 @@ public class PublicTests {
 	}
 
 	/**
-	 * 输入文本内容
+	 * 输入文本内容TAB录入
 	 * 
 	 * @param ele
 	 * @param atr
@@ -195,7 +194,7 @@ public class PublicTests {
 	}
 
 	/**
-	 * 输入后TAB键录入
+	 * 输入后点击键录入
 	 * 
 	 * @param xpath
 	 * @param downpath

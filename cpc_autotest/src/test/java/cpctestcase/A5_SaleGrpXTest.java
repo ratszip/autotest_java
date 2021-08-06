@@ -27,13 +27,13 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Order(1)
 	@DisplayName("case_001_品牌")
 	public void brand() throws InterruptedException {
-		wrtin(ElementLocate.BRAND, "Eddie Bauer",2 );
+		wrtin(ElementLocate.fieldLocate("品牌"), "Eddie Bauer",2 );
 	}
 	@DisplayName("case_002修改下单")
 	@Test
 	@Order(2)
 	public void xiadan() throws InterruptedException {
-		selecpare(ElementLocate.chooseVeryf("下单", "BONNY HUANG"), 1);
+		selecpare(ElementLocate.chooseVeryf("下单", "BONNY HUANG"));
 	}
 	
 	@DisplayName("case_003下单带出组别")
@@ -48,13 +48,13 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Test
 	@Order(4)
 	public void jianyan3() throws InterruptedException {
-		wrtin(ElementLocate.BRAND, ElementLocate.BRAND_AP,"AP",2 );
+		wrtin(ElementLocate.fieldLocate("品牌"), ElementLocate.rtTextlocat("AP"),"AP",2 );
 	}
 	
 	@DisplayName("case_005选择类型")
 	@Test
 	@Order(5)
 	public void cate() throws InterruptedException {
-		selecpare(ElementLocate.chooseVeryf("类型", "取库存"), 1);
+		selecpare(ElementLocate.chooseVeryf("类型", "取库存"));
 	}
 }

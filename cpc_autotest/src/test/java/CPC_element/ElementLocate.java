@@ -41,7 +41,7 @@ public class ElementLocate {
 	 * @return
 	 */
 	public static String rtTextlocat(String text) {
-		return "//div[normalize-space(text()='" + text + "')] | //span[normalize-space(text()='" + text + "')]";
+		return "//div[text()='" + text + "'] | //span[text()='" + text + "']";
 	}
 
 	// 主表按钮:查询新增...

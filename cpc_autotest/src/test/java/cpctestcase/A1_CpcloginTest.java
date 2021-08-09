@@ -40,7 +40,7 @@ class A1_CpcloginTest extends PublicTests
 		WebElement login = d.findElement(By.xpath(ElementLocate.rtTextlocat("Login")));
 		login.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.rtTextlocat("测试"))));	
-		WebElement info=d.findElement(By.xpath(ElementLocate.rtTextlocat("开始进入用户测试")));
+		WebElement info=d.findElement(By.xpath(ElementLocate.rtTextlocat("当前版本:0.2")));
 		assertTrue(info.isDisplayed(),"显示首页信息");
     }
 }

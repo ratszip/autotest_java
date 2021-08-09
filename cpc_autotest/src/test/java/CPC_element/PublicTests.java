@@ -38,6 +38,7 @@ public class PublicTests {
 
 	/**
 	 * 通过字段名和要选择/录入的内容进行操作并断言
+	 * 
 	 * @param choostore 返回的xpath数组
 	 * @throws InterruptedException
 	 */
@@ -54,16 +55,14 @@ public class PublicTests {
 			new Actions(d).sendKeys(Keys.TAB).perform();
 		}
 		Thread.sleep(100);
-		if (vele.getTagName().equals("div")) {//div与input的路径有不同，分别处理
+		if (vele.getTagName().equals("div")) {// div与input的路径有不同，分别处理
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(choostore[2])));
-			textoratrEq(choostore[2], 1, compare);
+			textoratrEq(choostore[2], compare);
 		} else {
 			Thread.sleep(100);
-			textoratrEq(choostore[0], 2, compare);
+			textoratrEq(choostore[0], compare);
 		}
 	}
-
-
 
 	/**
 	 * 保存原数据
@@ -127,7 +126,7 @@ public class PublicTests {
 			vele.sendKeys(Keys.BACK_SPACE);
 		}
 		vele.sendKeys(Keys.TAB);
-		textoratrEq(xpath, atr, "");
+		textoratrEq(xpath, "");
 	}
 
 	/**
@@ -143,7 +142,7 @@ public class PublicTests {
 		vele.sendKeys(text);
 		Thread.sleep(100);
 		vele.sendKeys(Keys.TAB);
-		textoratrEq(xpath, 2, text);
+		textoratrEq(xpath,text);
 	}
 
 	/**
@@ -165,7 +164,7 @@ public class PublicTests {
 		// vele.sendKeys(Keys.TAB);
 		Thread.sleep(300);
 		vele = d.findElement(By.xpath(xpath));
-		textoratrEq(xpath, 2, compare);
+		textoratrEq(xpath, compare);
 	}
 
 	public void assertBoolean(String xpath, String text, int atr) {
@@ -191,19 +190,15 @@ public class PublicTests {
 	 * @param atr
 	 * @param compare
 	 */
-	public void textoratrEq(String xpath, int atr, String compare) {
+	public void textoratrEq(String xpath, String compare) {
 		// wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
-
 		vele = d.findElement(By.xpath(xpath));
-		switch (atr) {
-		case 1:
+		if (!xpath.contains("input")) {
 			assertEquals(vele.getText(), compare);
 			errorListener();
-			break;
-		case 2:
+		}else {
 			assertEquals(vele.getAttribute("value"), compare);
 			errorListener();
-			break;
 		}
 
 	}
@@ -215,19 +210,15 @@ public class PublicTests {
 	 * @param atr
 	 * @param compare
 	 */
-	public void textoratrNEq(String xpath, int atr, String compare) {
+	public void textoratrNEq(String xpath, String compare) {
 		vele = d.findElement(By.xpath(xpath));
-
-		switch (atr) {
-		case 1:
+		if (!xpath.contains("input")) {
 			assertNotEquals(vele.getText(), compare);
 			errorListener();
-			break;
-		case 2:
+		} else {
 			// System.out.println(vele.getAttribute("value"));
 			assertNotEquals(vele.getAttribute("value"), compare);
 			errorListener();
-			break;
 		}
 	}
 

@@ -20,7 +20,7 @@ public class A4_RefContTest extends PublicTests{
 	@Order(2)
 	@DisplayName("case_002_单号类别默认不为空")
 	public void Order_test() throws InterruptedException {
-		textoratrNEq(ElementLocate.fieldLocate("单号类别"), 1, "");
+		textoratrNEq(ElementLocate.fieldLocate("单号类别"), "");
 		Thread.sleep(200);
     }
 	

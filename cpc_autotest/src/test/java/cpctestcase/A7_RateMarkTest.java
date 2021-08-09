@@ -35,7 +35,7 @@ public class A7_RateMarkTest extends PublicTests{
 	@Order(4)
 	@DisplayName("case_004_目的港")
 	public void des() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("目的港"), "DESHARBOR-test", 2);
+		wrtin(ElementLocate.fieldLocate("目的港"), "DESHARBOR-test");
     }
 	
 	@Test
@@ -103,31 +103,31 @@ public class A7_RateMarkTest extends PublicTests{
 	@Order(14)
 	@DisplayName("case_014_免收款备注")
 	public void freemark() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("免收款备注"), "Free-test",2);
+		wrtin(ElementLocate.fieldLocate("免收款备注"), "Free-test");
     }
 	
 	@Test
 	@Order(15)
 	@DisplayName("case_015_送货单标注")
 	public void delimark() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("送货单标注"), "Deliv-test", 2);
+		wrtin(ElementLocate.fieldLocate("送货单标注"), "Deliv-test");
     }
 	@Test
 	@Order(16)
 	@DisplayName("case_016_备注")
 	public void mainmark() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("备注"), "MainMark-test",2);
+		wrtin(ElementLocate.fieldLocate("备注"), "MainMark-test");
     }
 	@Test
 	@Order(17)
 	@DisplayName("case_017_单价备注")
 	public void pricemark() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("单价备注"), "uprice-test",2);
+		wrtin(ElementLocate.fieldLocate("单价备注"), "uprice-test");
     }
 	@Test
 	@Order(18)
 	@DisplayName("case_018_开发者编号")
 	public void devbh() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("开发编号"), "uprice-test",2);
+		wrtin(ElementLocate.fieldLocate("开发编号"), "uprice-test");
     }
 }

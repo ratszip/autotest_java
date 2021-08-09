@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import com.cpc.Util.PublicData;
+
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
 
@@ -62,5 +64,6 @@ public class A8_CheckBoxMTest extends PublicTests{
 	@DisplayName("case_009_不统计")
 	public void btj() throws InterruptedException {
 		checkboxSelec(ElementLocate.checkpath("不统计"));
+		PublicData.d.close();
     }
 }

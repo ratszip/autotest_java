@@ -22,7 +22,7 @@ class A1_CpcloginTest extends PublicTests
 {	
 	String baseURL=PublicData.baseURL;
 	WebDriver d=PublicData.d;
-	WebDriverWait wait=new WebDriverWait(d, 3);
+	WebDriverWait wait=new WebDriverWait(d, 8);
 	
     @Test
     @Order(1)
@@ -39,9 +39,8 @@ class A1_CpcloginTest extends PublicTests
 		pswd.sendKeys("xuzhipeng123");
 		WebElement login = d.findElement(By.xpath(ElementLocate.rtTextlocat("Login")));
 		login.click();
-		WebDriverWait wait = new WebDriverWait(d, 10);	
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.INDEX)));	
-		WebElement info=d.findElement(By.xpath(ElementLocate.TITLE));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.rtTextlocat("测试"))));	
+		WebElement info=d.findElement(By.xpath(ElementLocate.rtTextlocat("开始进入用户测试")));
 		assertTrue(info.isDisplayed(),"显示首页信息");
     }
 }

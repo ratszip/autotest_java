@@ -27,7 +27,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Order(1)
 	@DisplayName("case_001_品牌")
 	public void brand() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("品牌"), "Eddie Bauer",2 );
+		wrtin(ElementLocate.fieldLocate("品牌"), "Eddie Bauer" );
 	}
 	@DisplayName("case_002修改下单")
 	@Test
@@ -48,7 +48,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Test
 	@Order(4)
 	public void jianyan3() throws InterruptedException {
-		wrtin(ElementLocate.fieldLocate("品牌"), ElementLocate.rtTextlocat("AP"),"AP",2 );
+		wrtin(ElementLocate.fieldLocate("品牌"), ElementLocate.rtTextlocat("AP"),"AP");
 	}
 	
 	@DisplayName("case_005选择类型")

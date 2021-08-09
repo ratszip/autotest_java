@@ -21,7 +21,7 @@ public class A3_CusNoTest extends PublicTests{
 	@DisplayName("case_001_录入开票客户")
 	   public void B1_test() throws InterruptedException {
 		Thread.sleep(1000);
-		wrtin(ElementLocate.fieldLocate("开票客户"), "东莞伟展时装针织有限公司", 2);
+		wrtin(ElementLocate.fieldLocate("开票客户"), "东莞伟展时装针织有限公司");
 		Thread.sleep(100);
     }
 	

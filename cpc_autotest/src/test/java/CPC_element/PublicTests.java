@@ -37,27 +37,10 @@ public class PublicTests {
 	static ReportExtent report = new ReportExtent(extent);
 
 	/**
-	 * 
-	 * @param ele         选项框
-	 * @param eletext     选项框内容
-	 * @param eledown     选项框下拉项目
-	 * @param atr         获取文本方式
+	 * 通过字段名和要选择/录入的内容进行操作并断言
+	 * @param choostore 返回的xpath数组
 	 * @throws InterruptedException
 	 */
-//	public void selecpare(String elexpath, String eletext, String downxpath, int atr) throws InterruptedException {
-//		vele = d.findElement(By.xpath(elexpath));
-//		vele.click();
-//		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
-//		Thread.sleep(50);
-//		veledown = d.findElement(By.xpath(downxpath));
-//		compare = d.findElement(By.xpath(downxpath)).getText();
-//		veledown.click();
-//		Thread.sleep(100);
-//		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(eletext)));
-//		veletext = d.findElement(By.xpath(eletext));
-//		textoratrEq(elexpath, atr, compare);
-//	}
-
 	public void selecpare(String[] choostore) throws InterruptedException {
 		vele = d.findElement(By.xpath(choostore[0]));
 		vele.click();
@@ -65,52 +48,22 @@ public class PublicTests {
 		Thread.sleep(50);
 		veledown = d.findElement(By.xpath(choostore[1]));
 		compare = d.findElement(By.xpath(choostore[1])).getText();
-		// 如果页面有相同的选项，则直接TAB键
-		try {
+		try {// 如果页面有相同的内容，则直接TAB键
 			veledown.click();
 		} catch (ElementClickInterceptedException e) {
 			new Actions(d).sendKeys(Keys.TAB).perform();
 		}
 		Thread.sleep(100);
-		if (vele.getTagName().equals("div")) {
+		if (vele.getTagName().equals("div")) {//div与input的路径有不同，分别处理
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(choostore[2])));
 			textoratrEq(choostore[2], 1, compare);
 		} else {
 			Thread.sleep(100);
 			textoratrEq(choostore[0], 2, compare);
 		}
-
 	}
 
-	public void selecpare(String elexpath, String downxpath, int atr) throws InterruptedException {
-		vele = d.findElement(By.xpath(elexpath));
-		vele.click();
-		Thread.sleep(100);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downxpath)));
-		Thread.sleep(50);
-		veledown = d.findElement(By.xpath(downxpath));
-		compare = d.findElement(By.xpath(downxpath)).getText();
-		veledown.click();
-		textoratrEq(elexpath, atr, compare);
-	}
 
-	/**
-	 * no data available
-	 * 
-	 * @param ele     输入框
-	 * @param eledown 输入框下拉项
-	 * @param atr     获取内容的方式
-	 * @param zdy     自定义断言的文本
-	 * @throws InterruptedException
-	 */
-	public void selecpare(String elexpath, String downpath, int atr, String zdy) throws InterruptedException {
-		vele = d.findElement(By.xpath(elexpath));
-		vele.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
-		veledown = d.findElement(By.xpath(downpath));
-		veledown.click();
-		textoratrEq(elexpath, atr, zdy);
-	}
 
 	/**
 	 * 保存原数据
@@ -184,17 +137,17 @@ public class PublicTests {
 	 * @param atr
 	 * @throws InterruptedException
 	 */
-	public void wrtin(String xpath, String text, int atr) throws InterruptedException {
+	public void wrtin(String xpath, String text) throws InterruptedException {
 		vele = d.findElement(By.xpath(xpath));
 		Thread.sleep(100);
 		vele.sendKeys(text);
 		Thread.sleep(100);
 		vele.sendKeys(Keys.TAB);
-		textoratrEq(xpath, atr, text);
+		textoratrEq(xpath, 2, text);
 	}
 
 	/**
-	 * 输入后点击键录入
+	 * 输入后，下拉列表显示对应内容，点击对应选项录入
 	 * 
 	 * @param xpath
 	 * @param downpath
@@ -202,7 +155,7 @@ public class PublicTests {
 	 * @param atr
 	 * @throws InterruptedException
 	 */
-	public void wrtin(String xpath, String downpath, String text, int atr) throws InterruptedException {
+	public void wrtin(String xpath, String downpath, String text) throws InterruptedException {
 		vele = d.findElement(By.xpath(xpath));
 		vele.sendKeys(text);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
@@ -212,7 +165,7 @@ public class PublicTests {
 		// vele.sendKeys(Keys.TAB);
 		Thread.sleep(300);
 		vele = d.findElement(By.xpath(xpath));
-		textoratrEq(xpath, atr, compare);
+		textoratrEq(xpath, 2, compare);
 	}
 
 	public void assertBoolean(String xpath, String text, int atr) {

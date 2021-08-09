@@ -1,14 +1,13 @@
 package CPC_element;
 
 public class ElementLocate {
-	public static String INDEX = "//*[@id=\"upwIndex\"]";// 主页
-	public static String TITLE = "//h2[text()='UPW信息管理系统网页面版']";// 主页标题
 	public static String ICON = "//*[@id=\"upwIndex\"]/div/div/nav/div[1]/div[1]/div[1]/div[1]/button";// 左菜单图标
 	public static String PRO_STORE = "//div[contains(text(),'成品仓管理系统 ')]/parent::div";// 成品仓管理系统
 	public static String SALE_CONTRA = "//div[contains(text(),'销售合同')]/parent::div";// 销售合同
 	public static String SALE_CONTRA_WR = "//div[contains(text(),'销售合同录入')]/parent::a/i";// 销售合同录入
 	public static String DELIVERY_WAY_mk = "//label[text()='交货方式'][@class='v-label v-label--active theme--light']";// 标签
 	public static String GROUP_BUSI_TEXT = "//label[text()='下单']/../../../../../following-sibling::div[1]/div";// 组别
+
 	/**
 	 * 选择框进行选择
 	 * @param fieldname
@@ -27,7 +26,6 @@ public class ElementLocate {
 	
 	/**
 	 * label/div通过字段返回xpath
-	 * 
 	 * @param fieldname 字段名
 	 * @return
 	 */
@@ -39,12 +37,11 @@ public class ElementLocate {
 	
 	/**
 	 * 返回包含对应文本的xpath
-	 * 
 	 * @param text div | span
 	 * @return
 	 */
 	public static String rtTextlocat(String text) {
-		return "//div[text()='" + text + "'] | //span[text()='" + text + "']";
+		return "//div[normalize-space(text()='" + text + "')] | //span[normalize-space(text()='" + text + "')]";
 	}
 
 	// 主表按钮:查询新增...
@@ -52,9 +49,7 @@ public class ElementLocate {
 		return "//span[text()='" + fieldname + "']/parent::div[1]";
 	}
 
-	/**
-	 * 主表的checkbox的xpath
-	 */
+	//主表checkbox的xpath
 	public static String[] checkpath(String fieldname) {
 		String[] field = new String[2];
 		field[1] = "//label[text()='" + fieldname + "']/preceding-sibling::div[1]";
@@ -64,7 +59,6 @@ public class ElementLocate {
 
 	/**
 	 * 细表按钮：新增修改...
-	 * 
 	 * @param fieldname 按钮名称
 	 * @return 按钮的xpath
 	 */

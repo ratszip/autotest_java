@@ -12,6 +12,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.cpc.Util.CPCDateUtils;
+import com.cpc.Util.Log;
 import com.cpc.Util.PublicData;
 import com.cpc.Util.ReportExtent;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -35,6 +38,7 @@ public class PublicTests {
 	static ExtentReports extent = new ExtentReports("reports/extent.html", true, NetworkMode.OFFLINE);
 	@RegisterExtension
 	static ReportExtent report = new ReportExtent(extent);
+	final static Log log=Log.getlogger(PublicTests.class);
 
 	/**
 	 * 通过字段名和要选择/录入的内容进行操作并断言
@@ -185,18 +189,18 @@ public class PublicTests {
 
 	/**
 	 * 判断用getText还是getAtrribute,断言Equal
-	 * 
 	 * @param ele
 	 * @param atr
 	 * @param compare
 	 */
 	public void textoratrEq(String xpath, String compare) {
-		// wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
 		vele = d.findElement(By.xpath(xpath));
 		if (!xpath.contains("input")) {
+			Log.info("比较选择或输入的数据:"+compare+"和表格中的内容:"+vele.getText());
 			assertEquals(vele.getText(), compare);
 			errorListener();
 		}else {
+			Log.info("比较选择或输入的数据:"+compare+"和表格中的内容:"+vele.getAttribute("value"));
 			assertEquals(vele.getAttribute("value"), compare);
 			errorListener();
 		}
@@ -238,10 +242,29 @@ public class PublicTests {
 	public void errorListener() {
 		Boolean b;
 		if (d.getPageSource().contains("错误") || d.getPageSource().contains("异常")) {
+			Log.error("系统出现错误或异常");
 			b = false;
 		} else {
 			b = true;
 		}
 		assertTrue(b, "是否出现错误提示");
+	}
+	
+	
+	/**
+	 * JS方式填入日期
+	 * @param fieldname
+	 * @param nday 今天往后几天
+	 */
+	public void jsdate(String fieldname,int nday) {
+		WebElement btdate=d.findElement(By.xpath(ElementLocate.fieldLocate(fieldname)));
+		String nextNday=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),nday);
+		String jscript="document.evaluate(\""+
+		ElementLocate.fieldLocate(fieldname)+
+		"\",document).iterateNext().value="+
+		"'"+nextNday+"'";
+		JavascriptExecutor driver_js2=((JavascriptExecutor) d);
+		driver_js2.executeScript(jscript);
+		assertEquals(btdate.getAttribute("value"),nextNday);
 	}
 }

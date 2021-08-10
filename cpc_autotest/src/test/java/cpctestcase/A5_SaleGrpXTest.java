@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+import com.cpc.Util.Log;
+
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
 
@@ -27,12 +29,14 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Order(1)
 	@DisplayName("case_001_品牌")
 	public void brand() throws InterruptedException {
+		Log.info("输入品牌");
 		wrtin(ElementLocate.fieldLocate("品牌"), "Eddie Bauer" );
 	}
 	@DisplayName("case_002修改下单")
 	@Test
 	@Order(2)
 	public void xiadan() throws InterruptedException {
+		Log.info("选择一个下单人");
 		selecpare(ElementLocate.chooseVeryf("下单", "BONNY HUANG"));
 	}
 	
@@ -41,6 +45,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Order(3)
 	public void jianyan1() throws InterruptedException {
 		Thread.sleep(500);
+		Log.info("验证下单带出的组别");
 		verify(beforemap);
 	}
 	
@@ -48,6 +53,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Test
 	@Order(4)
 	public void jianyan3() throws InterruptedException {
+		Log.info("输入品牌");
 		wrtin(ElementLocate.fieldLocate("品牌"), ElementLocate.rtTextlocat("AP"),"AP");
 	}
 	
@@ -55,6 +61,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Test
 	@Order(5)
 	public void cate() throws InterruptedException {
+		Log.info("选择类型");
 		selecpare(ElementLocate.chooseVeryf("类型", "取库存"));
 	}
 }

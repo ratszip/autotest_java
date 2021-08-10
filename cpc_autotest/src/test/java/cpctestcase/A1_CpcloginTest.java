@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.cpc.Util.Log;
 import com.cpc.Util.PublicData;
 
 import CPC_element.ElementLocate;
@@ -42,5 +43,6 @@ class A1_CpcloginTest extends PublicTests
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.rtTextlocat("测试"))));	
 		WebElement info=d.findElement(By.xpath(ElementLocate.rtTextlocat("当前版本:0.2")));
 		assertTrue(info.isDisplayed(),"显示首页信息");
+		Log.info("登录CPC系统");
     }
 }

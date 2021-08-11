@@ -88,7 +88,7 @@ public class PublicTests {
 	}
 
 	/**
-	 * 校验修改后的内容
+	 * 校验内容是否修改
 	 * 
 	 * @param map
 	 */
@@ -231,6 +231,7 @@ public class PublicTests {
 		veletext = d.findElement(By.xpath(field[1]));
 		if (!vele.isSelected()) {
 			veletext.click();
+			Log.info("验证是否勾选成功");
 			assertTrue(vele.isSelected());
 			errorListener();
 		}
@@ -257,7 +258,7 @@ public class PublicTests {
 	 * @param nday 今天往后几天
 	 */
 	public void jsdate(String fieldname,int nday) {
-		WebElement btdate=d.findElement(By.xpath(ElementLocate.fieldLocate(fieldname)));
+		vele=d.findElement(By.xpath(ElementLocate.fieldLocate(fieldname)));
 		String nextNday=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),nday);
 		String jscript="document.evaluate(\""+
 		ElementLocate.fieldLocate(fieldname)+
@@ -265,6 +266,12 @@ public class PublicTests {
 		"'"+nextNday+"'";
 		JavascriptExecutor driver_js2=((JavascriptExecutor) d);
 		driver_js2.executeScript(jscript);
-		assertEquals(btdate.getAttribute("value"),nextNday);
+		assertEquals(vele.getAttribute("value"),nextNday);
+	}
+	
+	public void btclick(String xpath) {
+		//*[@id="tab-1"]/div[2]/div/div[2]/div/div/div/table/tbody
+		vele=d.findElement(By.xpath(xpath));
+		vele.click();
 	}
 }

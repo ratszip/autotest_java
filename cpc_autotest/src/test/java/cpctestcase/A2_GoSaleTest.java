@@ -54,4 +54,12 @@ public class A2_GoSaleTest extends PublicTests{
     	Log.info("验证自动生成了合同日期");
     	assertBoolean(ElementLocate.fieldLocate("合同日期"), CPCDateUtils.getCurDate2(), 2);
     }
+    
+	@Test
+    @Order(3)
+    @DisplayName("点击新增")
+    public void newsub() throws InterruptedException {
+		Log.info("点击新增细表");
+		btclick(ElementLocate.buttonM("新增细表"));
+	}
 }

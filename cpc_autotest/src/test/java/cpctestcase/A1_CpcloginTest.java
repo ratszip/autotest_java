@@ -31,7 +31,6 @@ class A1_CpcloginTest extends PublicTests
     public void A1_test()
     {
     	d.get(baseURL);
-    	//登录
     	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("user_name")));
 		WebElement usrname = d.findElement(By.id("user_name"));
 		usrname.click();

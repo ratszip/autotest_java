@@ -6,6 +6,7 @@ import com.cpc.Util.PublicData;
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
+import io.github.artsok.RepeatedIfExceptionsTest;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -20,10 +21,11 @@ public class A3_CusNoTest extends PublicTests{
 	@Test
 	@Order(1)
 	@DisplayName("case_001_录入开票客户")
+	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
 	   public void B1_test() throws InterruptedException {
 		Thread.sleep(1000);
 		Log.info("选择开票客户");
-		wrtin(ElementLocate.fieldLocate("开票客户"), "东莞伟展时装针织有限公司");
+		wrtin(ElementLocate.fieldLocate("开票客户")[1], "东莞伟展时装针织有限公司");
 		Thread.sleep(100);
     }
 	
@@ -32,7 +34,7 @@ public class A3_CusNoTest extends PublicTests{
 	@DisplayName("case_002_检查客户地址")
 	public void advf() throws InterruptedException {
 		Log.info("检查客户地址是否为空");
-		textoratrNEq(ElementLocate.fieldLocate("客户地址"), "");
+		textoratrNEq(ElementLocate.fieldLocate("客户地址")[1], "");
 	}
 	
 	@Test
@@ -40,7 +42,7 @@ public class A3_CusNoTest extends PublicTests{
 	@DisplayName("case_003_检查电话")
 	public void phvf() throws InterruptedException {
 		Log.info("检查客户电话是否为空");
-		textoratrNEq(ElementLocate.fieldLocate("客户电话"), "");
+		textoratrNEq(ElementLocate.fieldLocate("客户电话")[1], "");
 	}
 	
 	@Test
@@ -48,7 +50,7 @@ public class A3_CusNoTest extends PublicTests{
 	@DisplayName("case_004_检查下单")
 	public void xdvf() throws InterruptedException {
 		Log.info("检查下单人是否为空");
-		textoratrNEq(ElementLocate.fieldLocate("下单"), "");
+		textoratrNEq(ElementLocate.fieldLocate("下单")[1], "");
 	}
 	@Test
 	@Order(5)
@@ -63,14 +65,14 @@ public class A3_CusNoTest extends PublicTests{
 	@DisplayName("case_006_检查营业")
 	public void savf() throws InterruptedException {
 		Log.info("检查营业是否为空");
-		textoratrNEq(ElementLocate.fieldLocate("营业"), "");
+		textoratrNEq(ElementLocate.fieldLocate("营业")[1], "");
 	}
 	@Test
 	@Order(7)
 	@DisplayName("case_007_检查订单日期")
 	public void ddvf() throws InterruptedException {
 		Log.info("检查订单日期是否是今天");
-		textoratrEq(ElementLocate.fieldLocate("订单"),CPCDateUtils.getCurDate());
+		textoratrEq(ElementLocate.fieldLocate("订单")[1],CPCDateUtils.getCurDate());
 	}
 	
 }

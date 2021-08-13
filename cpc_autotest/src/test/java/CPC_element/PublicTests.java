@@ -142,6 +142,7 @@ public class PublicTests {
 	 */
 	public void wrtin(String xpath, String text) throws InterruptedException {
 		vele = d.findElement(By.xpath(xpath));
+		vele.clear();
 		Thread.sleep(100);
 		vele.sendKeys(text);
 		Thread.sleep(100);
@@ -160,6 +161,7 @@ public class PublicTests {
 	 */
 	public void wrtin(String xpath, String downpath, String text) throws InterruptedException {
 		vele = d.findElement(By.xpath(xpath));
+		vele.clear();
 		vele.sendKeys(text);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(downpath)));
 		veledown = d.findElement(By.xpath(downpath));
@@ -258,7 +260,7 @@ public class PublicTests {
 	 * @param nday 今天往后几天
 	 */
 	public void jsdate(String fieldname,int nday) {
-		vele=d.findElement(By.xpath(ElementLocate.fieldLocate(fieldname)));
+		vele=d.findElement(By.xpath(ElementLocate.fieldLocate(fieldname)[1]));
 		String nextNday=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),nday);
 		String jscript="document.evaluate(\""+
 		ElementLocate.fieldLocate(fieldname)+
@@ -267,6 +269,8 @@ public class PublicTests {
 		JavascriptExecutor driver_js2=((JavascriptExecutor) d);
 		driver_js2.executeScript(jscript);
 		assertEquals(vele.getAttribute("value"),nextNday);
+		
+		
 	}
 	
 	public void btclick(String xpath) {

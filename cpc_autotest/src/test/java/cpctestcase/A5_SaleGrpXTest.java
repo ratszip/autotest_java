@@ -13,6 +13,7 @@ import com.cpc.Util.Log;
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
+import io.github.artsok.RepeatedIfExceptionsTest;
 
 @DisplayName("下单营业组别品牌交互")
 @TestInstance(Lifecycle.PER_CLASS)
@@ -22,19 +23,21 @@ public class A5_SaleGrpXTest extends PublicTests{
 	
 	@BeforeAll
 	public void set() {
-		beforemap=before_verify(ElementLocate.GROUP_BUSI_TEXT,ElementLocate.fieldLocate("营业"));
+		beforemap=before_verify(ElementLocate.GROUP_BUSI_TEXT,ElementLocate.fieldLocate("营业")[1]);
 	}
 	
 	@Test
 	@Order(1)
 	@DisplayName("case_001_品牌")
+	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
 	public void brand() throws InterruptedException {
 		Log.info("输入品牌");
-		wrtin(ElementLocate.fieldLocate("品牌"), "Eddie Bauer" );
+		wrtin(ElementLocate.fieldLocate("品牌")[1], "Eddie Bauer" );
 	}
 	@DisplayName("case_002修改下单")
 	@Test
 	@Order(2)
+	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
 	public void xiadan() throws InterruptedException {
 		Log.info("选择一个下单人");
 		selecpare(ElementLocate.chooseVeryf("下单", "BONNY HUANG"));
@@ -54,7 +57,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Order(4)
 	public void jianyan3() throws InterruptedException {
 		Log.info("输入品牌");
-		wrtin(ElementLocate.fieldLocate("品牌"), ElementLocate.rtTextlocat("AP"),"AP");
+		wrtin(ElementLocate.fieldLocate("品牌")[1], ElementLocate.rtTextlocat("AP"),"AP");
 	}
 	
 	@DisplayName("case_005选择类型")

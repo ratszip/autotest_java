@@ -11,6 +11,7 @@ import com.cpc.Util.PublicData;
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
+import io.github.artsok.RepeatedIfExceptionsTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,6 +29,7 @@ class A1_CpcloginTest extends PublicTests
     @Test
     @Order(1)
     @DisplayName("case_001_登录CPC")
+    @RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
     public void A1_test()
     {
     	d.get(baseURL);

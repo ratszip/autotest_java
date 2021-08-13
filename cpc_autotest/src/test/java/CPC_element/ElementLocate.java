@@ -16,11 +16,12 @@ public class ElementLocate {
 	 * @return
 	 */
 	public static String[] chooseVeryf(String fieldname, String fielddown) {
-		String[] field = new String[3];	
+		String[] field = new String[4];	
 		field[0] = "//label[text()='" + fieldname + "']/following-sibling::div[1] |"+
 				"//label[text()='" + fieldname + "']/following-sibling::input[1]";
 		field[1] = "//div[text()='" + fielddown + "']";
 		field[2] = "//label[text()='" + fieldname + "']/following-sibling::div[1]/div[1]";
+		field[3] = fieldname;
 		return field;
 	}
 	
@@ -29,10 +30,12 @@ public class ElementLocate {
 	 * @param fieldname 字段名
 	 * @return
 	 */
-	public static String fieldLocate(String fieldname) {
-		return "//label[text()='" + fieldname + "']/following-sibling::div[1] | " 
+	public static String[] fieldLocate(String fieldname) {
+		String xpath="//label[text()='" + fieldname + "']/following-sibling::div[1] | " 
 				+ "//label[text()='" + fieldname
 				+ "']/following-sibling::input[1]";
+		String[] strary=new String[] {fieldname,xpath};
+		return strary;
 	}
 	
 	/**
@@ -51,9 +54,10 @@ public class ElementLocate {
 
 	//主表checkbox的xpath
 	public static String[] checkpath(String fieldname) {
-		String[] field = new String[2];
+		String[] field = new String[4];
 		field[1] = "//label[text()='" + fieldname + "']/preceding-sibling::div[1]";
 		field[0] = "//label[text()='" + fieldname + "']/preceding-sibling::div[1]/input[1]";
+		field[3] = fieldname;
 		return field;
 	}
 
@@ -69,7 +73,7 @@ public class ElementLocate {
 				return "//*[@id'tab-1']/div[2]/div/div[1]/button[" + (i + 1) + "]";
 			}
 		}
-		return "wrong button";
+		return null;
 	}
 
 }

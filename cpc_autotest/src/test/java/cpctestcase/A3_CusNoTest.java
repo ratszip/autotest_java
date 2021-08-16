@@ -6,7 +6,6 @@ import com.cpc.Util.PublicData;
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
-import io.github.artsok.RepeatedIfExceptionsTest;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -21,7 +20,7 @@ public class A3_CusNoTest extends PublicTests{
 	@Test
 	@Order(1)
 	@DisplayName("case_001_录入开票客户")
-	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
+//	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
 	   public void B1_test() throws InterruptedException {
 		Thread.sleep(1000);
 		Log.info("选择开票客户");

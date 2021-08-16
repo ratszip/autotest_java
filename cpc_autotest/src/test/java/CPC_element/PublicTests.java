@@ -260,17 +260,16 @@ public class PublicTests {
 	 * @param nday 今天往后几天
 	 */
 	public void jsdate(String fieldname,int nday) {
-		vele=d.findElement(By.xpath(ElementLocate.fieldLocate(fieldname)[1]));
+		String xpath=ElementLocate.fieldLocate(fieldname)[1];
+		vele=d.findElement(By.xpath(xpath));
 		String nextNday=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),nday);
 		String jscript="document.evaluate(\""+
-		ElementLocate.fieldLocate(fieldname)+
+		xpath+
 		"\",document).iterateNext().value="+
 		"'"+nextNday+"'";
 		JavascriptExecutor driver_js2=((JavascriptExecutor) d);
 		driver_js2.executeScript(jscript);
 		assertEquals(vele.getAttribute("value"),nextNday);
-		
-		
 	}
 	
 	public void btclick(String xpath) {

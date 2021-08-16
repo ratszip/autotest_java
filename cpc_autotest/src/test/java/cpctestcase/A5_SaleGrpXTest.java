@@ -13,7 +13,6 @@ import com.cpc.Util.Log;
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
-import io.github.artsok.RepeatedIfExceptionsTest;
 
 @DisplayName("下单营业组别品牌交互")
 @TestInstance(Lifecycle.PER_CLASS)
@@ -29,7 +28,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@Test
 	@Order(1)
 	@DisplayName("case_001_品牌")
-	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
+//	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
 	public void brand() throws InterruptedException {
 		Log.info("输入品牌");
 		wrtin(ElementLocate.fieldLocate("品牌")[1], "Eddie Bauer" );
@@ -37,7 +36,7 @@ public class A5_SaleGrpXTest extends PublicTests{
 	@DisplayName("case_002修改下单")
 	@Test
 	@Order(2)
-	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
+//	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
 	public void xiadan() throws InterruptedException {
 		Log.info("选择一个下单人");
 		selecpare(ElementLocate.chooseVeryf("下单", "BONNY HUANG"));

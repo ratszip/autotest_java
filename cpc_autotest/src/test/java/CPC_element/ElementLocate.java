@@ -66,11 +66,14 @@ public class ElementLocate {
 	 * @param fieldname 按钮名称
 	 * @return 按钮的xpath
 	 */
+	////*[@id="tab-1"]/div[2]/div/div[1]/button[1]
+	////*[@id="tab-1"]/div[2]/div/div[1]/button[1]
+	////*[@id="tab-1"]/div[2]/div/div[1]/button[1]
 	public static String buttonM(String fieldname) {
 		String[] buttox = { "新增细表", "修改细表", "删除", "物料清单", "挑批", "旧票抽毛", "抽毛", "清货", "新增色号", "出缸筒子", "旧票出货信息", "3号仓抽毛" };
 		for (int i = 0; i < buttox.length; i++) {
 			if (buttox[i] == fieldname) {
-				return "//*[@id'tab-1']/div[2]/div/div[1]/button[" + (i + 1) + "]";
+				return "//*[@id='tab-1']/div[2]/div/div[1]/button["+(i+1)+"]";
 			}
 		}
 		return null;

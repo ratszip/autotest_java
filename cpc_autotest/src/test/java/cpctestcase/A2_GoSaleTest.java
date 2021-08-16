@@ -17,7 +17,6 @@ import com.cpc.Util.PublicData;
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
-import io.github.artsok.RepeatedIfExceptionsTest;
 
 @DisplayName("进入销售合同录入")
 public class A2_GoSaleTest extends PublicTests{
@@ -26,7 +25,7 @@ public class A2_GoSaleTest extends PublicTests{
 	@Test
     @Order(1)
     @DisplayName("case_001_打开销售合同录入")
-	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
+//	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
     public void A2_test() throws InterruptedException {
 		WebElement ele=d.findElement(By.xpath(ElementLocate.ICON));
 		Log.info("打开左侧菜单");
@@ -52,7 +51,7 @@ public class A2_GoSaleTest extends PublicTests{
     @Test
     @Order(2)
     @DisplayName("case_002_已自动生成合同日期")
-    @RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
+//    @RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
     public void salesDate() throws InterruptedException {
     	Log.info("验证自动生成了合同日期");
     	assertBoolean(ElementLocate.fieldLocate("合同日期")[1], CPCDateUtils.getCurDate2(), 2);
@@ -61,7 +60,7 @@ public class A2_GoSaleTest extends PublicTests{
 	@Test
     @Order(3)
     @DisplayName("点击新增")
-	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
+//	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
     public void newsub() throws InterruptedException {
 		Log.info("点击新增细表");
 		btclick(ElementLocate.buttonM("新增细表"));

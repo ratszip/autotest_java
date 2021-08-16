@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import com.cpc.Util.Log;
+import com.cpc.Util.PublicData;
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
@@ -18,5 +19,7 @@ public class A9_NewSubTest extends PublicTests{
     public void newsub() throws InterruptedException {
 		Log.info("点击新增细表");
 		btclick(ElementLocate.buttonM("新增细表"));
+		PublicData.d.close();
+		
 	}
 }

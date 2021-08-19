@@ -38,6 +38,15 @@ public class ElementLocate {
 		return strary;
 	}
 	
+	public static String[] xlocate(String fieldname,String xpath,String fielddown) {
+		String[] strary=new String[4];
+		strary[0]=xpath;
+		strary[1]="//div[text()='" + fielddown + "']";
+		strary[2]=xpath;
+		strary[3]=fieldname;
+		return strary;
+	}
+	
 	/**
 	 * 返回包含对应文本的xpath
 	 * @param text div | span
@@ -49,7 +58,7 @@ public class ElementLocate {
 
 	// 主表按钮:查询新增...
 	public static String buttoz(String fieldname) {
-		return "//span[text()='" + fieldname + "']/parent::div[1]";
+		return "//span[text()='" + fieldname + "']/parent::button[1]";
 	}
 
 	//主表checkbox的xpath
@@ -66,9 +75,6 @@ public class ElementLocate {
 	 * @param fieldname 按钮名称
 	 * @return 按钮的xpath
 	 */
-	////*[@id="tab-1"]/div[2]/div/div[1]/button[1]
-	////*[@id="tab-1"]/div[2]/div/div[1]/button[1]
-	////*[@id="tab-1"]/div[2]/div/div[1]/button[1]
 	public static String buttonM(String fieldname) {
 		String[] buttox = { "新增细表", "修改细表", "删除", "物料清单", "挑批", "旧票抽毛", "抽毛", "清货", "新增色号", "出缸筒子", "旧票出货信息", "3号仓抽毛" };
 		for (int i = 0; i < buttox.length; i++) {
@@ -78,5 +84,4 @@ public class ElementLocate {
 		}
 		return null;
 	}
-
 }

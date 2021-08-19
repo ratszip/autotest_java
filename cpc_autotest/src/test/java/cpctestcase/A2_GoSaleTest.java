@@ -21,7 +21,7 @@ import CPC_element.PublicTests;
 @DisplayName("进入销售合同录入")
 public class A2_GoSaleTest extends PublicTests{
 	WebDriver d=PublicData.d;
-	WebDriverWait wait=new WebDriverWait(d, 7);
+	WebDriverWait wait=new WebDriverWait(d, 9);
 	@Test
     @Order(1)
     @DisplayName("case_001_打开销售合同录入")
@@ -56,13 +56,4 @@ public class A2_GoSaleTest extends PublicTests{
     	Log.info("验证自动生成了合同日期");
     	assertBoolean(ElementLocate.fieldLocate("合同日期")[1], CPCDateUtils.getCurDate2(), 2);
     }
-    
-	@Test
-    @Order(3)
-    @DisplayName("点击新增")
-//	@RepeatedIfExceptionsTest(repeats=5,minSuccess = 1)
-    public void newsub() throws InterruptedException {
-		Log.info("点击新增细表");
-		btclick(ElementLocate.buttonM("新增细表"));
-	}
 }

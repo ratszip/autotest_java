@@ -74,4 +74,28 @@ public class A8_CheckBoxMTest extends PublicTests{
 		Log.info("勾选不统计");
 		checkboxSelec(ElementLocate.checkpath("不统计"));
     }
+	
+	@Test
+	@Order(10)
+	@DisplayName("case_010_去勾选等通知生产")
+	public void btjo() throws InterruptedException {
+		Log.info("取消勾选等通知生产");
+		checkboxUnSelec(ElementLocate.checkpath("等通知生产"));
+    }
+	
+	@Test
+	@Order(11)
+	@DisplayName("case_011_去勾选等通知并线")
+	public void btjpf() throws InterruptedException {
+		Log.info("取消勾选等通知生产");
+		checkboxUnSelec(ElementLocate.checkpath("等通知并线"));
+    }
+	
+	@Test
+	@Order(12)
+	@DisplayName("case_0012_去勾选客人色排纺")
+	public void krspf() throws InterruptedException {
+		Log.info("勾选客人色排纺");
+		checkboxUnSelec(ElementLocate.checkpath("客人色排纺"));
+    }
 }

@@ -23,7 +23,7 @@ public class A6_DateBoatTest extends PublicTests{
 	@Test
 	@Order(2)
 //	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
-	public void btdt() {
+	public void btdt(){
 		Log.info("填写船期");
 		jsdate("船期",2);
 	}

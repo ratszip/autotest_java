@@ -63,7 +63,7 @@ public class A7_RateMarkTest extends PublicTests{
 //	@RepeatedIfExceptionsTest(repeats=3,minSuccess = 1)
 	public void trade() throws InterruptedException {
 		Log.info("选择贸易方式");
-		selecpare(ElementLocate.chooseVeryf("贸易方式", "内销(D)"));
+		selecpare(ElementLocate.chooseVeryf("贸易方式", "外销(H)"));
     }
 	@Test
 	@Order(7)

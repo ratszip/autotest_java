@@ -12,7 +12,6 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,7 +37,7 @@ public class PublicTests {
 	static ExtentReports extent = new ExtentReports("reports/extent.html", true, NetworkMode.OFFLINE);
 	@RegisterExtension
 	static ReportExtent report = new ReportExtent(extent);
-	final static Log log=Log.getlogger(PublicTests.class);
+	final static Log log = Log.getlogger(PublicTests.class);
 
 	/**
 	 * 通过字段名和要选择/录入的内容进行操作并断言
@@ -103,8 +102,6 @@ public class PublicTests {
 			} else {
 				textafter = ele.getAttribute("value");
 			}
-//			System.out.println("before:"+textbefore);
-//			System.out.println("after:"+textafter);
 			assertTrue(!textbefore.equals(textafter), "是否修改");
 		}
 	}
@@ -147,7 +144,7 @@ public class PublicTests {
 		vele.sendKeys(text);
 		Thread.sleep(100);
 		vele.sendKeys(Keys.TAB);
-		textoratrEq(xpath,text);
+		textoratrEq(xpath, text);
 	}
 
 	/**
@@ -191,6 +188,7 @@ public class PublicTests {
 
 	/**
 	 * 判断用getText还是getAtrribute,断言Equal
+	 * 
 	 * @param ele
 	 * @param atr
 	 * @param compare
@@ -198,11 +196,11 @@ public class PublicTests {
 	public void textoratrEq(String xpath, String compare) {
 		vele = d.findElement(By.xpath(xpath));
 		if (!xpath.contains("input")) {
-			Log.info("比较选择或输入的数据:"+compare+"和表格中的内容:"+vele.getText());
+			Log.info("比较选择或输入的数据:" + compare + "和表格中的内容:" + vele.getText());
 			assertEquals(vele.getText(), compare);
 			errorListener();
-		}else {
-			Log.info("比较选择或输入的数据:"+compare+"和表格中的内容:"+vele.getAttribute("value"));
+		} else {
+			Log.info("比较选择或输入的数据:" + compare + "和表格中的内容:" + vele.getAttribute("value"));
 			assertEquals(vele.getAttribute("value"), compare);
 			errorListener();
 		}
@@ -239,6 +237,17 @@ public class PublicTests {
 		}
 	}
 
+	public void checkboxUnSelec(String[] field) {
+		vele = d.findElement(By.xpath(field[0]));
+		veletext = d.findElement(By.xpath(field[1]));
+		if (vele.isSelected()) {
+			veletext.click();
+			Log.info("验证是否勾选成功");
+			assertTrue(!vele.isSelected());
+			errorListener();
+		}
+	}
+
 	/**
 	 * 是否有错误提示
 	 */
@@ -252,29 +261,37 @@ public class PublicTests {
 		}
 		assertTrue(b, "是否出现错误提示");
 	}
-	
-	
+
 	/**
 	 * JS方式填入日期
+	 * 
 	 * @param fieldname
-	 * @param nday 今天往后几天
+	 * @param nday      今天往后几天
+	 * @throws InterruptedException
 	 */
-	public void jsdate(String fieldname,int nday) {
-		String xpath=ElementLocate.fieldLocate(fieldname)[1];
-		vele=d.findElement(By.xpath(xpath));
-		String nextNday=CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(),nday);
-		String jscript="document.evaluate(\""+
-		xpath+
-		"\",document).iterateNext().value="+
-		"'"+nextNday+"'";
-		JavascriptExecutor driver_js2=((JavascriptExecutor) d);
-		driver_js2.executeScript(jscript);
-		assertEquals(vele.getAttribute("value"),nextNday);
+	public void jsdate(String fieldname, int nday) {
+
+		String xpath = ElementLocate.fieldLocate(fieldname)[1];
+		vele = d.findElement(By.xpath(xpath));
+
+		String nextNday = CPCDateUtils.getSpecifiedDayAfter(CPCDateUtils.getCurDate(), nday);
+		if (!vele.getAttribute("value").equals("") || vele.getAttribute("value") == null) {
+			vele.clear();
+			vele.sendKeys(Keys.TAB);
+		}
+		vele.sendKeys(nextNday);
+//		new Actions(d).moveByOffset(1, 1).perform();
+		/*
+		 * String jscript="document.evaluate(\""+ xpath+
+		 * "\",document).iterateNext().value="+ "'"+nextNday+"'"; JavascriptExecutor
+		 * driver_js2=((JavascriptExecutor) d); driver_js2.executeScript(jscript);
+		 */
+		assertEquals(vele.getAttribute("value"), nextNday);
 	}
-	
+
 	public void btclick(String xpath) {
-		//*[@id="tab-1"]/div[2]/div/div[2]/div/div/div/table/tbody
-		vele=d.findElement(By.xpath(xpath));
+		vele = d.findElement(By.xpath(xpath));
 		vele.click();
 	}
+
 }

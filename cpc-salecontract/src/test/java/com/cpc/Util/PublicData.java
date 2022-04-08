@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class PublicData {
 	static {
-		System.setProperty("webdriver.chrome.driver","D:\\autotest\\webdriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","D:\\autotest\\chromedriver.exe");
 	}
 	
 	//窗口最大化

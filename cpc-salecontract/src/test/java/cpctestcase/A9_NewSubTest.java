@@ -94,7 +94,7 @@ public class A9_NewSubTest extends PublicTests{
 		String xpath="//tbody/tr[2]/td[56]/div/div/div/div/input";
 		selecpare(ElementLocate.xlocate("收货公司",xpath,"东莞升丽针织有限公司"));
 		Thread.sleep(200);
-		d.close();
+//		d.close();
 	}
 	
 //	@Test

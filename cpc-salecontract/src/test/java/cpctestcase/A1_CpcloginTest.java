@@ -1,6 +1,7 @@
 package cpctestcase;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.cpc.Util.Log;
 import com.cpc.Util.PublicData;
+
 
 import CPC_element.ElementLocate;
 import CPC_element.PublicTests;
@@ -33,11 +35,13 @@ class A1_CpcloginTest extends PublicTests
     {
     	d.get(baseURL);
     	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("user_name")));
+    	
 		WebElement usrname = d.findElement(By.id("user_name"));
+		//usrname.sendKeys(Keys.ADD,Keys.CONTROL);
 		usrname.click();
 		usrname.sendKeys("zhipengxu");
 		WebElement pswd = d.findElement(By.id("password"));
-		pswd.sendKeys("xuzhipeng123");
+		pswd.sendKeys("x2p123");
 		WebElement login = d.findElement(By.xpath(ElementLocate.rtTextlocat("Login")));
 		login.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementLocate.rtTextlocat("测试"))));	
